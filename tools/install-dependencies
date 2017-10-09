@@ -1,1 +1,1 @@
-sudo apt install build-essential nasm bison flex python-mako automake libtool gperf
+sudo apt install build-essential nasm bison flex python-mako automake libtool gperf autopoint

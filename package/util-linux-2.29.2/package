@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package=util-linux
+version=2.29.2
+package_source=$package-$version.tar.xz
+package_url=https://cdn.kernel.org/pub/linux/utils/$package/v2.29/$package_source
+do_autoreconf=yes

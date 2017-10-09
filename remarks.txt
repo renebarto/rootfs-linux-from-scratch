@@ -51,4 +51,12 @@ libffi-3.2.1
 
 - Needs auto-reconf, so added this as option to package.
 
+ncurses-5.9
 
+- Needed by readline. Weirdly complains about usr/lib/pkgconfig/zlib.pc not being a directory, while trying to install .pc files. However ncurses does itself not generate a .pc file.
+
+readline-7.0
+
+-
+
+util-linux-2.29.2

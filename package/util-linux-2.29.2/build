@@ -1,0 +1,3 @@
+#!/bin/bash
+
+PATH="$_PATH" CPATH=$PREFIX/include LIBS="" /usr/bin/make -j5 -C $build_directory

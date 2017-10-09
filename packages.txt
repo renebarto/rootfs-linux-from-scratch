@@ -6,3 +6,8 @@ fontconfig-2.12.1
 util-macros-1.19.1
 libpciaccess-0.13.4
 libpthread-stubs-0.3
+libffi-3.2.1
+ncurses-5.9
+readline-7.0
+util-linux-2.29.2
+libdrm-2.4.75
