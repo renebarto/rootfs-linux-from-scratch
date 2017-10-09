@@ -1,0 +1,30 @@
+#!/bin/bash
+
+output_directory=$root_directory/output
+staging_directory=$output_directory/staging
+target_directory=$output_directory/target
+build_directory=$root_directory/build/$package-$version
+
+PREFIX="$staging_directory/usr"
+export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig"
+
+export XORG_PREFIX="$PREFIX"
+export XORG_CONFIG="--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
+
+_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH
+_AR=/usr/bin/ar
+_AS=/usr/bin/as
+_LD=/usr/bin/ld
+_NM=/usr/bin/nm
+_CC=/usr/bin/gcc
+_GCC=/usr/bin/gcc
+_CPP=/usr/bin/cpp
+_CXX=/usr/bin/g++
+_FC=/usr/bin/gfortran
+_F77=/usr/bin/gfortran
+_RANLIB=/usr/bin/ranlib
+_READELF=/usr/bin/readelf
+_STRIP=/usr/bin/strip
+_OBJCOPY=/usr/bin/objcopy
+_OBJDUMP=/usr/bin/objdump
+_PKG_CONFIG=/usr/bin/pkg-config

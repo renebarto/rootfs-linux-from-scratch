@@ -1,0 +1,31 @@
+#!/bin/bash
+
+PATH="$_PATH" /usr/bin/make -j5 \
+  DESTDIR=$target_directory install \
+  -C $build_directory
+
+echo_color yellow "Fixing package configuration $package-$version"
+
+/bin/sed -i -e "s,$output_directory,@BASE_DIR@,g" \
+  -e "s,$target_directory,@TARGET_DIR@,g" \
+  -e "s,^\(exec_\)\?prefix=.*,\1prefix=@TARGET_DIR@/usr,g" \
+  -e "s|\([\"'= ]\)/usr|\\1@TARGET_DIR@/usr|g" \
+  -e "s|-I/usr/|-I@TARGET_DIR@/usr/|g" \
+  -e "s|-L/usr/|-L@TARGET_DIR@/usr/|g" \
+  -e "s,@TARGET_DIR@,$target_directory,g" \
+  -e "s,@BASE_DIR@,$output_directory,g" \
+  $target_directory/usr/bin/freetype-config ;
+
+echo_color yellow "Fixing libtool files $package-$version"
+
+source $root_directory/tools/install-functions
+
+update_references $target_directory/usr/lib* "*.la" $target_directory
+
+echo_color yellow "Fixing pkg-config files $package-$version"
+
+for directory in $target_directory/usr/lib/pkgconfig $target_directory/usr/share/pkgconfig; do
+  if [ -d $directory ]; then
+    update_references $directory "*.pc" $target_directory
+  fi
+done

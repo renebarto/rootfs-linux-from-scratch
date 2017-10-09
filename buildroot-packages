@@ -1,0 +1,187 @@
+host-lzip 1.18
+host-ccache 3.3.4
+host-gawk 4.1.4
+host-binutils 2.26.1
+host-m4 1.4.18
+host-gmp 6.1.2
+host-mpfr 3.1.5
+host-mpc 1.0.3
+host-gcc-initial 5.4.0
+host-mkpasswd
+skeleton
+linux-headers 4.9.6
+glibc 2.24
+host-gcc-final 5.4.0
+toolchain-buildroot
+toolchain
+acpid 2.0.28
+bitstream-vera 1.10
+busybox 1.26.2
+host-libtool 2.4.6
+host-autoconf 2.69
+host-automake 1.15
+c-ares 1.12.0
+host-pkgconf 0.9.12
+expat 2.2.0
+zlib 1.2.11
+libpng 1.6.28
+freetype 2.4.6
+host-gperf 3.0.4
+fontconfig 2.12.1
+host-bison 3.0.4
+host-flex 2.5.37
+libpciaccess 0.13.4
+libpthread-stubs 0.3
+host-expat 2.2.0
+host-zlib 1.2.11
+host-python 2.7.13
+libffi 3.2.1
+python 2.7.13
+kmod 24
+host-ncurses 5.9
+ncurses 5.9
+readline 7.0
+util-linux 2.29.2
+eudev 3.2.1
+udev
+libdrm 2.4.75
+host-libxml2 2.9.4
+host-libxslt 1.1.29
+host-xcb-proto 1.12
+xcb-proto 1.12
+xproto_xproto 7.0.31
+xutil_util-macros 1.19.1
+xlib_libXau 1.0.8
+xlib_libXdmcp 1.1.2
+libxcb 1.12
+openssl 1.0.2k
+host-libffi 3.2.1
+host-wayland 1.13.0
+libxml2 2.9.4
+wayland 1.13.0
+host-xproto_xproto 7.0.31
+xlib_xtrans 1.3.5
+xproto_inputproto 2.3.2
+xproto_kbproto 1.0.7
+xproto_xextproto 7.3.0
+xproto_xf86bigfontproto 1.2.0
+xlib_libX11 1.6.5
+xproto_fixesproto 5.0
+xlib_libXfixes 5.0.3
+xproto_damageproto 1.2.1
+xlib_libXdamage 1.1.4
+xlib_libXext 1.3.3
+xproto_dri2proto 2.8
+xproto_glproto 1.4.17
+xproto_xf86driproto 2.1.1
+mesa3d 17.0.1
+libgl
+host-gettext 0.19.8.1
+host-pcre 8.40
+host-util-linux 2.29.2
+host-libglib2 2.50.3
+pcre 8.40
+libglib2 2.50.3
+pixman 0.34.0
+cairo 1.14.8
+xlib_libICE 1.0.9
+xlib_libSM 1.2.2
+dbus 1.10.16
+iptables 1.6.1
+connman 1.33
+host-dosfstools 4.0
+dropbear 2016.74
+host-e2fsprogs 1.43.4
+host-genext2fs 1.4.1
+host-libconfuse 3.0
+host-genimage 9
+gesftpserver 0.2.1
+libtasn1 4.9
+libunistring 0.9.7
+gmp 6.1.2
+nettle 2.7.1
+gnutls 3.3.22
+host-libxml-parser-perl 2.44
+host-intltool 0.51.0
+glib-networking 2.50.0
+graphite2 1.2.4
+gstreamer1 1.10.4
+host-orc 0.4.26
+orc 0.4.26
+xproto_videoproto 2.3.3
+xlib_libXv 1.0.11
+gst1-plugins-base 1.10.4
+gst1-plugins-good 1.10.4
+libegl
+libgles
+libglu 9.0.0
+gst1-plugins-bad 1.10.4
+mpg123 1.23.8
+gst1-plugins-ugly 1.10.4
+host-icu 57.1
+icu 57.1
+harfbuzz 1.0.1
+initscripts
+host-nasm 2.12.02
+jpeg-turbo 1.5.1
+jpeg
+libcurl 7.32.0
+libevdev 1.5.6
+libgpg-error 1.26
+libgcrypt 1.7.6
+xlib_libXi 1.7.9
+xlib_libXt 1.1.5
+xlib_libXmu 1.1.2
+libglew 2.0.0
+host-python3 3.5.2
+mtdev 1.1.4
+libinput 1.6.3
+libmng 2.0.3
+libnl 3.2.29
+sqlite 3170000
+libsoup 2.56.0
+libxkbcommon 0.7.1
+libxslt 1.1.29
+linux-firmware
+host-mke2img
+host-mtools 4.0.18
+playready
+webp 0.5.2
+netflix
+host-lzip 1.18
+freetype 2.7.1
+graphite2 1.3.9
+harfbuzz 1.4.4
+libcurl 7.53.1
+host-shared-mime-info 1.8
+shared-mime-info 1.8
+wayland-protocols 1.7
+wpa_supplicant 2.6
+wpebackend
+host-cmake 3.7.2
+host-ninja v1.7.1
+host-ruby 2.4.0
+wpewebkit
+wpelauncher
+host-libpthread-stubs 0.3
+host-xutil_util-macros 1.19.1
+host-xlib_libXau 1.0.8
+host-xlib_libXdmcp 1.1.2
+host-libxcb 1.12
+host-xlib_xtrans 1.3.5
+host-xproto_inputproto 2.3.2
+host-xproto_kbproto 1.0.7
+host-xproto_xextproto 7.3.0
+host-xproto_xf86bigfontproto 1.2.0
+host-xlib_libX11 1.6.5
+host-xlib_libxkbfile 1.0.9
+host-xapp_xkbcomp 1.3.1
+xkeyboard-config 2.20
+wpebackend-rdk
+xlib_libxkbfile 1.0.9
+xapp_xkbcomp 1.3.1
+grub2 2.00
+host-kmod 24
+linux 4.9.6
+host-fakeroot 1.20.2
+host-makedevs

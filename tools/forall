@@ -1,0 +1,11 @@
+#!/bin/bash
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+cat $root_directory/packages.txt | grep -v '^$' | grep -v '^\#' | while read package
+do
+    $root_directory/tools/$1 $package
+done
+

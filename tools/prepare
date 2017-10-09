@@ -1,0 +1,35 @@
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $script_directory/functions
+
+echo_color yellow "Preparing build"
+
+target_directory=$root_directory/output/target
+
+run_command "mkdir -pv $target_directory"
+if [[ $? -ne 0 ]] ; then
+	echo -e ""
+	echo_color yellow "Could not create directory $target_directory"
+    exit 1
+fi
+validated_install_prefix="$( cd "$( dirname "$target_directory" )" && pwd )"
+if [[ $? -ne 0 ]] ; then
+	echo -e ""
+	echo_color yellow "Non-existing directory $target_directory"
+    exit 1
+fi
+install_prefix=$validated_install_prefix
+echo_color yellow "Install prefix: $install_prefix"
+
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo -e ""
+echo_color yellow "Creating directories"
+run_command "mkdir -pv download"
+run_command "mkdir -pv build"
+
+echo -e ""
+echo_color yellow "Installing packages"
+$script_directory/install-dependencies

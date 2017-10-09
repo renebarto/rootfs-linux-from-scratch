@@ -1,0 +1,65 @@
+#!/bin/bash
+
+package_full=$1
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $script_directory/functions
+
+. $root_directory/package/$package_full/package
+
+echo_color yellow "Patching $package-$version"
+run_command "cd $root_directory/build/$package-$version"
+
+if [ ! -d $root_directory/patches/$package-$version ] ; then
+	echo_color yellow "No patches to apply"
+else
+  patch_files=$root_directory/patches/$package-$version/*.patch
+
+  for f in $patch_files
+  do
+    echo_color yellow "Apply patch $f ..."
+    run_command "patch -p1 < $f"
+  done
+fi
+
+if [ -n "$run_autogen" ]; then
+  . $root_directory/tools/setenv
+  run_command "cd $build_directory"
+  run_command "PATH=$_PATH $run_autogen"
+fi
+
+echo_color yellow "Updating config.sub and config.guess for $package-$version"
+
+for file in config.guess config.sub; do
+  for i in $(find $root_directory/build/$package-$version -name $file); do
+  	echo_color yellow "Updating $i"
+    cp $root_directory/tools/gnuconfig/$file $i;
+  done;
+done
+
+echo_color yellow "Patching libtool for $package-$version"
+
+for i in `find $root_directory/build/$package-$version -name ltmain.sh`; do
+  ltmain_version=`sed -n '/^[ \t]*VERSION=/{s/^[ \t]*VERSION=//;p;q;}' $i | sed -e 's/\([0-9]*\.[0-9]*\).*/\1/' -e 's/\"//'`; 
+  ltmain_patchlevel=`sed -n '/^[ \t]*VERSION=/{s/^[ \t]*VERSION=//;p;q;}' $i | sed -e 's/\([0-9]*\.[0-9]*\.*\)\([0-9]*\).*/\2/' -e 's/\"//'`; 
+  if test ${ltmain_version} = '1.5'; then
+	echo_color yellow "Patching ${i} for version ${ltmain_version}.${ltmain_patchlevel}"
+    patch -i $root_directory/tools/libtool/libtool-v1.5.patch ${i};
+  elif test ${ltmain_version} = "2.2"; then
+	echo_color yellow "Patching ${i} for version ${ltmain_version}.${ltmain_patchlevel}"
+    patch -i $root_directory/tools/libtool/libtool-v2.2.patch ${i};
+  elif test ${ltmain_version} = "2.4"; then 
+    if test ${ltmain_patchlevel:-0} -gt 2; then 
+      echo_color yellow "Patching ${i} for version ${ltmain_version}.${ltmain_patchlevel}"
+      patch -i $root_directory/tools/libtool/libtool-v2.4.4.patch ${i}; 
+    else
+      echo_color yellow "Patching ${i} for version ${ltmain_version}.${ltmain_patchlevel}"
+      patch -i $root_directory/tools/libtool/libtool-v2.4.patch ${i};
+    fi
+  fi
+done
+
+run_command "touch $root_directory/build/$package-$version/.stamp_patched"

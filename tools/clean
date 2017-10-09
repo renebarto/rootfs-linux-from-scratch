@@ -1,0 +1,15 @@
+#!/bin/bash
+
+package_full=$1
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $script_directory/functions
+
+. $root_directory/package/$package_full/package
+
+echo_color green "Cleaning $package-$version"
+
+rm -rf $root_directory/build/$package-$version

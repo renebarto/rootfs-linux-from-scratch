@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=fontconfig
+version=2.12.1
+package_source=$package-$version.tar.bz2
+package_url=http://fontconfig.org/release/$package_source

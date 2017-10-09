@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PREFIX="$PWD/staging/usr/"
+export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig"
+
+cd build/openssl/openssl-1.0.2k/
+./config --prefix=$PREFIX --openssldir=$PREFIX/../etc/ssl shared zlib-dynamic
+make
+make install
+

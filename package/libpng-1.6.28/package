@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=libpng
+version=1.6.28
+package_source=$package-$version.tar.xz
+package_url=https://downloads.sourceforge.net/$package/$package_source

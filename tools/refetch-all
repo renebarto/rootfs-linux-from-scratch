@@ -1,0 +1,13 @@
+#!/bin/bash
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $script_directory/functions
+
+run_command "mkdir -pv $root_directory/download"
+run_command "rm -rf $root_directory/download/*"
+
+. $script_directory/forall fetch
+

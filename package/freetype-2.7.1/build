@@ -1,0 +1,3 @@
+#!/bin/bash
+
+PATH="$_PATH" /usr/bin/make -j5 CCexe="/usr/bin/gcc" -C $build_directory

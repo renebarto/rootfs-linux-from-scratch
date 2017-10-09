@@ -1,0 +1,51 @@
+#!/bin/bash
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $root_directory/tools/functions
+
+. $script_directory/package
+. $root_directory/tools/setenv
+
+run_command "mkdir -pv $root_directory/build/$package-$version/build"
+run_command "cd $root_directory/build/$package-$version/build"
+
+PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" \
+NM="$_NM" CC="$_CC" GCC="$_GCC" CPP="$_CPP" \
+CXX="$_CXX" FC="$_FC" F77="$_F77" RANLIB="$_RANLIB" \
+READELF="$_READELF" STRIP="$_STRIP" OBJCOPY="$_OBJCOPY" \
+OBJDUMP="$_OBJDUMP" AR_FOR_BUILD="/usr/bin/ar" AS_FOR_BUILD="/usr/bin/as" \
+CC_FOR_BUILD="/usr/bin/gcc" GCC_FOR_BUILD="/usr/bin/gcc" \
+CXX_FOR_BUILD="/usr/bin/g++" LD_FOR_BUILD="/usr/bin/ld" \
+CPPFLAGS_FOR_BUILD="-I$staging_directory/usr/include" \
+CFLAGS_FOR_BUILD="-O2 -I$staging_directory/usr/include" \
+CXXFLAGS_FOR_BUILD="-O2 -I$staging_directory/usr/include" \
+LDFLAGS_FOR_BUILD="-L$staging_directory/lib -L$staging_directory/usr/lib -Wl,-rpath,$staging_directory/usr/lib" \
+FCFLAGS_FOR_BUILD="" \
+DEFAULT_ASSEMBLER="$_AS" DEFAULT_LINKER="$_LD" \
+CPPFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" \
+CFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 " \
+CXXFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 " \
+LDFLAGS="" FCFLAGS=" -O2 " FFLAGS=" -O2 " PKG_CONFIG="$_PKG_CONFIG" \
+STAGING_DIR="$staging_directory" \
+INTLTOOL_PERL=/usr/bin/perl CFLAGS="-O2 " CPPFLAGS="" CXXFLAGS="-O2 " \
+/bin/bash $root_directory/build/$package-$version/./configure \
+    ac_cv_path_BASH_SHELL=/bin/bash \
+    libc_cv_forced_unwind=yes \
+    libc_cv_ssp=no \
+    --target=x86_64-build-linux-gnu \
+    --host= \
+    --build= \
+    --prefix=$PREFIX \
+    --enable-shared \
+    --with-fp \
+    --enable-lock-elision \
+    --with-pkgversion="Build" \
+    --without-cvs \
+    --disable-profile \
+    --without-gd \
+    --enable-obsolete-rpc \
+    --enable-kernel=4.9 \
+    --with-headers=$root_directory/build/linux-headers-4.9.6/include

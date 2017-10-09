@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=expat
+version=2.2.0
+package_source=$package-$version.tar.bz2
+package_url=http://downloads.sourceforge.net/project/$package/$package/$version/$package_source

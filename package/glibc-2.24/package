@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=glibc
+version=2.24
+package_source=$package-$version.tar.xz
+package_url=http://ftp.gnu.org/gnu/$package/$package_source

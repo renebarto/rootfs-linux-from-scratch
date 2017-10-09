@@ -1,0 +1,21 @@
+#!/bin/bash
+
+package_full=$1
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $script_directory/functions
+
+. $root_directory/package/$package_full/package
+
+. $root_directory/tools/setenv
+
+echo_color yellow "Building $package-$version"
+
+run_command "cd $root_directory/build/$package-$version"
+
+. $root_directory/package/$package_full/build
+
+run_command "touch $root_directory/build/$package-$version/.stamp_built"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function update_references {
+  echo_color "update_references dir:$1 files:$2 output_dir:$3"
+  find $1 -name "$2" | xargs --no-run-if-empty \
+    /bin/sed -i \
+      -e "s:$3:@OUTPUT_DIR@:g" \
+      -e "s:$staging_directory:@OUTPUT_DIR@:g" \
+      -e "s:$output_directory:@BASE_DIR@:g" \
+      -e "s:\([\"'= ]\)/usr:\\1@OUTPUT_DIR@/usr:g" \
+      -e "s:\([\"'= ]\)$staging_directory/usr:\\1@OUTPUT_DIR@/usr:g" \
+      -e "s|-I/usr/|-I@OUTPUT_DIR@/usr/|g" \
+      -e "s|-L/usr/|-L@OUTPUT_DIR@/usr/|g" \
+      -e "s:@OUTPUT_DIR@:$3:g" \
+      -e "s:@BASE_DIR@:$output_directory:g"
+}
+

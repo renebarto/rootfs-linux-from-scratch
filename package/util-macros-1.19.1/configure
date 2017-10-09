@@ -1,0 +1,85 @@
+#!/bin/bash
+
+mkdir -p $PREFIX/../etc/profile.d
+
+cat > $PREFIX/../etc/profile.d/xorg.sh << EOF
+XORG_PREFIX="$XORG_PREFIX"
+XORG_CONFIG="--prefix=\$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
+export XORG_PREFIX XORG_CONFIG
+EOF
+chmod 644 $PREFIX/../etc/profile.d/xorg.sh
+
+cat >> $PREFIX/../etc/profile.d/xorg.sh << "EOF"
+
+pathappend $XORG_PREFIX/bin             PATH
+pathappend $XORG_PREFIX/lib/pkgconfig   PKG_CONFIG_PATH
+pathappend $XORG_PREFIX/share/pkgconfig PKG_CONFIG_PATH
+
+pathappend $XORG_PREFIX/lib             LIBRARY_PATH
+pathappend $XORG_PREFIX/include         C_INCLUDE_PATH
+pathappend $XORG_PREFIX/include         CPLUS_INCLUDE_PATH
+
+ACLOCAL="aclocal -I $XORG_PREFIX/share/aclocal"
+
+export PATH PKG_CONFIG_PATH ACLOCAL LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
+EOF
+
+echo "$XORG_PREFIX/lib" >> $PREFIX/../etc/ld.so.conf
+
+touch $PREFIX/../etc/man_db.conf
+sed "s@$PREFIX/X11R6@$XORG_PREFIX@g" -i $PREFIX/../etc/man_db.conf
+
+mkdir -p $PREFIX/share/X11
+
+ln -sf $XORG_PREFIX $PREFIX/X11R6
+
+PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
+CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \
+FC="$_FC" F77="$_F77" \
+RANLIB="$_RANLIB" \
+READELF="$_READELF" \
+STRIP="$_STRIP" \
+OBJCOPY="$_OBJCOPY" \
+OBJDUMP="$_OBJDUMP" \
+AR_FOR_BUILD="/usr/bin/ar" \
+AS_FOR_BUILD="/usr/bin/as" \
+CC_FOR_BUILD="/usr/bin/gcc" \
+GCC_FOR_BUILD="/usr/bin/gcc" \
+CXX_FOR_BUILD="/usr/bin/g++" \
+LD_FOR_BUILD="/usr/bin/ld" \
+CPPFLAGS_FOR_BUILD="-I$staging_directory/usr/include" \
+CFLAGS_FOR_BUILD="-O2 -I$staging_directory/usr/include" \
+CXXFLAGS_FOR_BUILD="-O2 -I$staging_directory/usr/include" \
+LDFLAGS_FOR_BUILD="-L$staging_directory/lib -L$staging_directory/usr/lib -Wl,-rpath,$staging_directory/usr/lib" \
+FCFLAGS_FOR_BUILD="" \
+DEFAULT_ASSEMBLER="$_AS" \
+DEFAULT_LINKER="$_LD" \
+CPPFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" \
+CFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 " \
+CXXFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 " \
+LDFLAGS="" \
+FCFLAGS=" -O2 " \
+FFLAGS=" -O2 " \
+PKG_CONFIG="$_PKG_CONFIG" \
+STAGING_DIR="$staging_directory" \
+INTLTOOL_PERL=/usr/bin/perl \
+ac_cv_lbl_unaligned_fail=no \
+ac_cv_func_mmap_fixed_mapped=yes \
+ac_cv_func_memcmp_working=yes \
+ac_cv_have_decl_malloc=yes \
+gl_cv_func_malloc_0_nonnull=yes \
+ac_cv_func_malloc_0_nonnull=yes \
+ac_cv_func_calloc_0_nonnull=yes \
+ac_cv_func_realloc_0_nonnull=yes \
+lt_cv_sys_lib_search_path_spec="" \
+ac_cv_c_bigendian=no \
+CONFIG_SITE=/dev/null \
+./configure \
+    --target=x86_64-build-linux-gnu \
+    --host= \
+    --build= \
+    --prefix=/usr \
+    --exec-prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --program-prefix=""

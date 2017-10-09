@@ -1,0 +1,41 @@
+#!/bin/bash
+
+package_full=$1
+
+root_directory=$(pwd)
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $root_directory
+
+source $script_directory/functions
+
+. $root_directory/package/$package_full/package
+
+full_filename=$(basename "$package_source")
+extension="${full_filename##*.}"
+filename="${full_filename%.*}"
+
+case $extension in
+xz)
+  cat_tool=xzcat
+  ;;
+bz2)
+  cat_tool=bzcat
+  ;;
+gz)
+  cat_tool=zcat
+  ;;
+*)
+  echo "Unknown archive extension"
+  echo "full_filename: $full_filename"
+  echo "extension: $extension"
+  echo "filename: $filename"
+  exit 1
+  ;;
+esac
+
+echo_color yellow "Unpacking $package-$version"
+run_command "mkdir -pv $root_directory/build/$package-$version"
+run_command "$($cat_tool $root_directory/download/$package_source | tar --strip-components=1 -C $root_directory/build/$package-$version -xf -)"
+
+run_command "chmod -R +rw $root_directory/build/$package-$version"
+run_command "touch $root_directory/build/$package-$version/.stamp_extracted"

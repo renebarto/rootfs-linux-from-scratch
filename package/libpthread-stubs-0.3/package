@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=libpthread-stubs
+version=0.3
+package_source=$package-$version.tar.gz
+package_url=https://xcb.freedesktop.org/dist/$package_source
