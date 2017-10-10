@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_full=$1
+package_name=$1
 
 root_directory=$(pwd)
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -8,13 +8,17 @@ cd $root_directory
 
 source $script_directory/functions
 
-. $root_directory/package/$package_full/package
+. $root_directory/package/$package_name/package
 
 cd $root_directory/download
 
 if [ -f $root_directory/download/$package_source ] ; then
 	exit 0
 fi
-echo_color yellow "Downloading $package-$version"
+echo_color yellow "Downloading $package_fullname-$version"
 run_command "wget -O $package_source $package_url"
 
+if [ $? -ne 0 ]; then
+	rm $root_directory/download/$package_source
+	exit 1
+fi

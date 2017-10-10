@@ -6,13 +6,13 @@ PATH="$_PATH" /usr/bin/make -j1 \
   LDCONFIG=true \
   install
 
-echo_color yellow "Fixing libtool files $package-$version"
+echo_color yellow "Fixing libtool files $package_fullname-$version"
 
 source $root_directory/tools/install-functions
 
 update_references $target_directory/usr/lib* "*.la" $target_directory
 
-echo_color yellow "Fixing pkg-config files $package-$version"
+echo_color yellow "Fixing pkg-config files $package_fullname-$version"
 
 for directory in $target_directory/usr/lib/pkgconfig $target_directory/usr/share/pkgconfig; do
   if [ -d $directory ]; then

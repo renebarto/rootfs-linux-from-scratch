@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_full=$1
+package_name=$1
 
 root_directory=$(pwd)
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -8,14 +8,18 @@ cd $root_directory
 
 source $script_directory/functions
 
-. $root_directory/package/$package_full/package
+. $root_directory/package/$package_name/package
 
 . $root_directory/tools/setenv
 
-echo_color yellow "Installing $package-$version to staging"
+echo_color yellow "Installing $package_fullname-$version to staging"
 
-run_command "cd $root_directory/build/$package-$version"
+run_command "cd $build_directory"
 
-. $root_directory/package/$package_full/install-staging
+. $root_directory/package/$package_name/install-staging
+if [ $? -ne 0 ]; then
+  echo_color red "Installing $package_fullname-$version to staging failed!"
+  exit 1
+fi
 
-run_command "touch $root_directory/build/$package-$version/.stamp_installed"
+run_command "touch $build_directory/.stamp_installed"

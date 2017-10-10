@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=util-linux
 package=util-linux
 version=2.29.2
 package_source=$package-$version.tar.xz

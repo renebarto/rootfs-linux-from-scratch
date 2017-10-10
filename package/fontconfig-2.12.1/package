@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=fontconfig
 package=fontconfig
 version=2.12.1
 package_source=$package-$version.tar.bz2

@@ -4,7 +4,7 @@ PATH="$_PATH" /usr/bin/make -j5 \
   DESTDIR=$staging_directory install \
   -C $build_directory
 
-echo_color yellow "Fixing package configuration $package-$version"
+echo_color yellow "Fixing package configuration $package_fullname-$version"
 
 /bin/sed -i -e "s,$output_directory,@BASE_DIR@,g" \
   -e "s,$staging_directory,@STAGING_DIR@,g" \
@@ -17,13 +17,13 @@ echo_color yellow "Fixing package configuration $package-$version"
   $staging_directory/usr/bin/libpng16-config \
   $staging_directory/usr/bin/libpng-config ;
 
-echo_color yellow "Fixing libtool files $package-$version"
+echo_color yellow "Fixing libtool files $package_fullname-$version"
 
 source $root_directory/tools/install-functions
 
 update_references $staging_directory/usr/lib* "*.la" $staging_directory
 
-echo_color yellow "Fixing pkg-config files $package-$version"
+echo_color yellow "Fixing pkg-config files $package_fullname-$version"
 
 for directory in $staging_directory/usr/lib/pkgconfig $staging_directory/usr/share/pkgconfig; do
   if [ -d $directory ]; then

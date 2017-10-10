@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=mesa
 package=mesa
 version=17.0.1
 package_source=$package-$version.tar.xz

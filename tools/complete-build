@@ -1,10 +1,10 @@
 #!/bin/bash
 
-package_full=$1
+package_name=$1
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-$script_directory/configure $package_full
-$script_directory/build $package_full
-$script_directory/install-staging $package_full
-$script_directory/install $package_full
+$script_directory/configure $package_name
+$script_directory/build $package_name
+$script_directory/install-staging $package_name
+$script_directory/install $package_name

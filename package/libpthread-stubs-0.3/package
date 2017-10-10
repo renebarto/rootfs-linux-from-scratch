@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=libpthread-stubs
 package=libpthread-stubs
 version=0.3
 package_source=$package-$version.tar.gz

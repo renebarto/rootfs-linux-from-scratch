@@ -56,9 +56,26 @@ CONFIG_SITE=/dev/null \
     --with-xmlto=no \
     --with-fop=no \
     --disable-dependency-tracking \
-    --enable-ipv6 \
     --disable-static \
     --enable-shared \
-    --disable-malloc0returnsnull \
-    --disable-specs \
-    --without-perl
+    --enable-glx \
+    --disable-mangling \
+    --enable-xa \
+    --enable-shared-glapi \
+    --with-gallium-drivers=nouveau,r600,svga,swrast,virgl \
+    --disable-dri3 \
+    --enable-shared-glapi \
+    --enable-driglx-direct \
+    --with-dri-drivers=swrast,i915,i965,nouveau,radeon \
+    --without-vulkan-drivers \
+    --enable-osmesa \
+    --enable-opengl \
+    --enable-dri \
+    --disable-va \
+    --enable-gbm \
+    --enable-egl \
+    --with-egl-platforms=drm,wayland,x11 \
+    --enable-gles1 \
+    --enable-gles2 \
+    --with-llvm-prefix=$staging_directory/usr/bin
+    

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=glibc
 package=glibc
 version=2.23
 package_source=$package-$version.tar.xz

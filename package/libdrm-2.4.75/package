@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=libdrm
 package=libdrm
 version=2.4.75
 package_source=$package-$version.tar.bz2

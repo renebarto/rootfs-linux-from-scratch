@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=libpciaccess
 package=libpciaccess
 version=0.13.4
 package_source=$package-$version.tar.bz2

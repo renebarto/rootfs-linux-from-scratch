@@ -3,7 +3,7 @@
 output_directory=$root_directory/output
 staging_directory=$output_directory/staging
 target_directory=$output_directory/target
-build_directory=$root_directory/build/$package-$version
+build_directory=$root_directory/build/$package_name
 
 PREFIX="$staging_directory/usr"
 export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig"

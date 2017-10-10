@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_full=$1
+package_name=$1
 
 root_directory=$(pwd)
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -8,7 +8,8 @@ cd $root_directory
 
 source $script_directory/functions
 
-. $root_directory/package/$package_full/package
+. $root_directory/package/$package_name/package
+. $root_directory/tools/setenv
 
 full_filename=$(basename "$package_source")
 extension="${full_filename##*.}"
@@ -25,17 +26,21 @@ gz)
   cat_tool=zcat
   ;;
 *)
-  echo "Unknown archive extension"
-  echo "full_filename: $full_filename"
-  echo "extension: $extension"
-  echo "filename: $filename"
+  echo_color red "Unknown archive extension"
+  echo_color green "full_filename: $full_filename"
+  echo_color green "extension: $extension"
+  echo_color green "filename: $filename"
   exit 1
   ;;
 esac
 
-echo_color yellow "Unpacking $package-$version"
-run_command "mkdir -pv $root_directory/build/$package-$version"
-run_command "$($cat_tool $root_directory/download/$package_source | tar --strip-components=1 -C $root_directory/build/$package-$version -xf -)"
+echo_color yellow "Unpacking $package_fullname-$version"
+run_command "mkdir -pv $build_directory"
+run_command "$($cat_tool $root_directory/download/$package_source | tar --strip-components=1 -C $build_directory -xf -)"
 
-run_command "chmod -R +rw $root_directory/build/$package-$version"
-run_command "touch $root_directory/build/$package-$version/.stamp_extracted"
+if [ $? -ne 0 ]; then
+  echo_color red "Unpacking $package_fullname-$version failed!"
+  exit 1
+fi
+run_command "chmod -R +rw $build_directory"
+run_command "touch $build_directory/.stamp_extracted"

@@ -13,12 +13,13 @@ function update_references {
       -e "s|-L/usr/|-L@OUTPUT_DIR@/usr/|g" \
       -e "s:@OUTPUT_DIR@:$3:g" \
       -e "s:@BASE_DIR@:$output_directory:g"
+  return $?
 }
 
 function patch_libtool {
-  echo_color yellow "Patching libtool for $package-$version"
+  echo_color yellow "Patching libtool for $package_fullname-$version"
 
-  for i in `find $root_directory/build/$package-$version -name ltmain.sh`; do
+  for i in `find $build_directory -name ltmain.sh`; do
     ltmain_version=`sed -n '/^[ \t]*VERSION=/{s/^[ \t]*VERSION=//;p;q;}' $i | sed -e 's/\([0-9]*\.[0-9]*\).*/\1/' -e 's/\"//'`; 
     ltmain_patchlevel=`sed -n '/^[ \t]*VERSION=/{s/^[ \t]*VERSION=//;p;q;}' $i | sed -e 's/\([0-9]*\.[0-9]*\.*\)\([0-9]*\).*/\2/' -e 's/\"//'`; 
     if test ${ltmain_version} = '1.5'; then
@@ -37,4 +38,5 @@ function patch_libtool {
       fi
     fi
   done
+  return $?
 }

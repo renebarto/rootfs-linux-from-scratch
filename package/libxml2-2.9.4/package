@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=libxml2
 package=libxml2
 version=2.9.4
 package_source=$package-$version.tar.gz

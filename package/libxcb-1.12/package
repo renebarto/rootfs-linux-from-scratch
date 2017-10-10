@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=libxcb
 package=libxcb
 version=1.12
 package_source=$package-$version.tar.bz2

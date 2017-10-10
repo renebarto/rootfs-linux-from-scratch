@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=util-macros
 package=util-macros
 version=1.19.1
 package_source=$package-$version.tar.bz2

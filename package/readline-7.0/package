@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=readline
 package=readline
 version=7.0
 package_source=$package-$version.tar.gz

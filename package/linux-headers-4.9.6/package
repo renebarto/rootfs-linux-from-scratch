@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=linux-headers
 package=linux-headers
 version=4.9.6
 package_source=linux-$version.tar.xz

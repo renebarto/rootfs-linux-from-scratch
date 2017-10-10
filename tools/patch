@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_full=$1
+package_name=$1
 
 root_directory=$(pwd)
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -9,36 +9,50 @@ cd $root_directory
 source $script_directory/functions
 source $script_directory/install-functions
 
-. $root_directory/package/$package_full/package
+. $root_directory/package/$package_name/package
+. $root_directory/tools/setenv
 
-echo_color yellow "Patching $package-$version"
-run_command "cd $root_directory/build/$package-$version"
+echo_color yellow "Patching $package_fullname-$version"
+run_command "cd $build_directory"
 
-if [ ! -d $root_directory/patches/$package-$version ] ; then
+if [ ! -d $root_directory/patches/$package_fullname-$version ] ; then
 	echo_color yellow "No patches to apply"
 else
-  patch_files=$root_directory/patches/$package-$version/*.patch
+  patch_files=$root_directory/patches/$package_fullname-$version/*.patch
 
   for f in $patch_files
   do
     echo_color yellow "Apply patch $f ..."
     run_command "patch -g0 -p1 -E -t < $f"
+    if [ $? -ne 0 ]; then
+      echo_color red "Apply patch $f ... failed!"
+      exit 1
+    fi
   done
 fi
 
 if [ -n "$run_autogen" ]; then
+  echo_color red "Running autogen"
   . $root_directory/tools/setenv
   run_command "cd $build_directory"
   run_command "PATH=$_PATH $run_autogen"
+  if [ $? -ne 0 ]; then
+    echo_color red "Running autogen failed!"
+    exit 1
+  fi
 fi
 
-echo_color yellow "Updating config.sub and config.guess for $package-$version"
+echo_color yellow "Updating config.sub and config.guess for $package_fullname-$version"
 
 for file in config.guess config.sub; do
-  for i in $(find $root_directory/build/$package-$version -name $file); do
+  for i in $(find $build_directory -name $file); do
   	echo_color yellow "Updating $i"
     cp $root_directory/tools/gnuconfig/$file $i;
+    if [ $? -ne 0 ]; then
+      echo_color red "Updating config.sub and config.guess for $package_fullname-$version failed!"
+      exit 1
+    fi
   done;
 done
 
-run_command "touch $root_directory/build/$package-$version/.stamp_patched"
+run_command "touch $build_directory/.stamp_patched"

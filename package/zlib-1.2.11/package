@@ -1,5 +1,6 @@
 #!/bin/bash
 
+package_fullname=zlib
 package=zlib
 version=1.2.11
 package_source=$package-$version.tar.xz
