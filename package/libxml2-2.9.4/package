@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=libxml2
+version=2.9.4
+package_source=$package-$version.tar.gz
+package_url=ftp://xmlsoft.org/libxml2/$package_source

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=libX11
+version=1.6.5
+package_source=$package-$version.tar.bz2
+package_url=https://xorg.freedesktop.org/archive/individual/lib/$package_source

@@ -69,11 +69,11 @@ libdrm-2.4.75
 
 xcb-proto-1.12
 
--
+- 
 
 xproto_xproto-7.0.31
 
--
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
 
 xlib_libXau-1.0.8
 
@@ -91,3 +91,66 @@ openssl-1.0.2k
 
 -
 
+libxml2-2.9.4
+
+-
+
+wayland-1.13.0
+
+- Buildroot builds a host version first to make sure wayland-scanner exists, then uses the host version to generate code. Switched to generating and using wayland-scanner on the fly.
+
+xlib_xtrans-1.3.5
+
+-
+
+xproto_inputproto-2.3.2
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xproto_kbproto-1.0.7
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xproto_xextproto-7.3.0
+
+- This proto IS installed to target.
+
+xproto_xf86bigfontproto-1.2.0
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xlib_libX11-1.6.5
+
+-
+
+xproto_fixesproto-5.0
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xlib_libXfixes-5.0.3
+
+-
+
+xproto_damageproto-1.2.1
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xlib_libXdamage-1.1.4
+
+-
+
+xlib_libXext-1.3.3
+
+-
+
+xproto_dri2proto-2.8
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xproto_glproto-1.4.17
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+xproto_xf86driproto-2.1.1
+
+- X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package=mesa
+version=17.0.1
+package_source=$package-$version.tar.xz
+package_url=https://mesa.freedesktop.org/archive/$package_source
+do_autoreconf=yes

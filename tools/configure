@@ -18,7 +18,8 @@ echo_color yellow "Configuring $package-$version"
 run_command "mkdir -pv $root_directory/build/$package-$version"
 run_command "cd $root_directory/build/$package-$version"
 
-if [ $do_autoreconf == "yes" ]; then
+if [ "$do_autoreconf" == "yes" ]; then
+	echo_color yellow "Auto-reconfiguring $package-$version"
 	. $root_directory/package/$package_full/autoreconfigure
 fi
 

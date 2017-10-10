@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/bin/sed -i -e '/X11_CFLAGS/d' $build_directory/src/util/Makefile*
+
 PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
 CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \
 FC="$_FC" F77="$_F77" \
@@ -51,27 +53,12 @@ CONFIG_SITE=/dev/null \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --program-prefix="" \
+    --with-xmlto=no \
+    --with-fop=no \
     --disable-dependency-tracking \
+    --enable-ipv6 \
     --disable-static \
     --enable-shared \
-    --enable-glx \
-    --disable-mangling \
-    --enable-xa \
-    --enable-shared-glapi \
-    --with-gallium-drivers=nouveau,r600,svga,swrast,virgl \
-    --disable-dri3 \
-    --enable-shared-glapi \
-    --enable-driglx-direct \
-    --with-dri-drivers=swrast,i915,i965,nouveau,radeon \
-    --without-vulkan-drivers \
-    --enable-osmesa \
-    --enable-opengl \
-    --enable-dri \
-    --disable-va \
-    --enable-gbm \
-    --enable-egl \
-    --with-egl-platforms=drm,wayland,x11 \
-    --enable-gles1 \
-    --enable-gles2 \
-    --with-llvm-prefix=$staging_directory/usr/bin
-    
+    --disable-malloc0returnsnull \
+    --disable-specs \
+    --without-perl
