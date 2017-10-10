@@ -7,6 +7,7 @@ script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $root_directory
 
 source $script_directory/functions
+source $root_directory/tools/install-functions
 
 . $root_directory/package/$package_name/package
 
@@ -16,7 +17,11 @@ echo_color yellow "Installing $package_fullname-$version to target"
 
 run_command "cd $build_directory"
 
-. $root_directory/package/$package_name/install
+if [ -f $root_directory/package/$package_name/install ]; then
+	. $root_directory/package/$package_name/install
+else
+	install_files install $target_directory
+fi
 if [ $? -ne 0 ]; then
   echo_color red "Installing $package_fullname-$version to target failed!"
   exit 1

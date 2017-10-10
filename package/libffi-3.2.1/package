@@ -5,4 +5,3 @@ package=libffi
 version=3.2.1
 package_source=$package-$version.tar.gz
 package_url=ftp://sourceware.org/pub/$package/$package_source
-do_autoreconf=yes

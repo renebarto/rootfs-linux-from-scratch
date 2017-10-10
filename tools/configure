@@ -18,13 +18,22 @@ echo_color yellow "Configuring $package_fullname-$version"
 run_command "mkdir -pv $build_directory"
 run_command "cd $build_directory"
 
-if [ "$do_autoreconf" == "yes" ]; then
+if [ -f $root_directory/package/$package_name/gettextize ]; then
+	echo_color yellow "Gettextizing $package_fullname-$version"
+	. $root_directory/package/$package_name/gettextize
+	if [ $? -ne 0 ]; then
+	  echo_color red "Gettextizing $package_fullname-$version failed!"
+	  exit 1
+	fi
+fi
+
+if [ -f $root_directory/package/$package_name/autoreconfigure ]; then
 	echo_color yellow "Auto-reconfiguring $package_fullname-$version"
 	. $root_directory/package/$package_name/autoreconfigure
-    if [ $? -ne 0 ]; then
+	if [ $? -ne 0 ]; then
 	  echo_color red "Auto-reconfiguring $package_fullname-$version failed!"
-      exit 1
-    fi
+	  exit 1
+	fi
 fi
 
 patch_libtool

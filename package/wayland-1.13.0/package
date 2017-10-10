@@ -5,4 +5,3 @@ package=wayland
 version=1.13.0
 package_source=$package-$version.tar.xz
 package_url=http://wayland.freedesktop.org/releases/$package_source
-do_autoreconf=yes

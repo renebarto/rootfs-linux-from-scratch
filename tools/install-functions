@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function update_references {
-  echo_color "update_references dir:$1 files:$2 output_dir:$3"
+  # echo_color green "update_references dir:$1 files:$2 output_dir:$3"
   find $1 -name "$2" | xargs --no-run-if-empty \
     /bin/sed -i \
       -e "s:$3:@OUTPUT_DIR@:g" \
@@ -14,6 +14,15 @@ function update_references {
       -e "s:@OUTPUT_DIR@:$3:g" \
       -e "s:@BASE_DIR@:$output_directory:g"
   return $?
+}
+
+function apply_patch {
+  patch -g0 -p1 -E -t -i $1 $2;
+  if [ $? -ne 0 ]; then
+    if echo "$OUTPUT" | grep -q "Reversed (or previously applied) patch detected!"; then
+        echo_color red "Reversed (or previously applied) patch detected!"
+    fi
+  fi
 }
 
 function patch_libtool {
@@ -31,7 +40,7 @@ function patch_libtool {
     elif test ${ltmain_version} = "2.4"; then 
       if test ${ltmain_patchlevel:-0} -gt 2; then 
         echo_color yellow "Patching ${i} for version ${ltmain_version}.${ltmain_patchlevel}"
-        patch -i $root_directory/tools/libtool/libtool-v2.4.4.patch ${i}; 
+        apply_patch $root_directory/tools/libtool/libtool-v2.4.4.patch ${i};
       else
         echo_color yellow "Patching ${i} for version ${ltmain_version}.${ltmain_patchlevel}"
         patch -i $root_directory/tools/libtool/libtool-v2.4.patch ${i};
@@ -39,4 +48,35 @@ function patch_libtool {
     fi
   done
   return $?
+}
+
+function install_files {
+  install_target=$1
+  install_destination=$2
+
+  PATH="$_PATH" /usr/bin/make -j5 \
+    DESTDIR=$install_destination $install_target -C $build_directory
+
+  echo_color yellow "Fixing libtool files $package_fullname-$version"
+
+  for directory in $install_destination/usr/lib*; do
+    if [ -d $directory ]; then
+      update_references $directory "*.la" $install_destination
+      if [ $? -ne 0 ]; then
+        return 1
+      fi
+    fi
+  done
+
+  echo_color yellow "Fixing pkg-config files $package_fullname-$version"
+
+  for directory in $install_destination/usr/lib/pkgconfig $install_destination/usr/share/pkgconfig; do
+    if [ -d $directory ]; then
+      update_references $directory "*.pc" $install_destination
+      if [ $? -ne 0 ]; then
+        return 1
+      fi
+    fi
+  done
+  return 0
 }

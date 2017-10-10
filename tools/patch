@@ -32,12 +32,12 @@ else
 fi
 
 if [ -n "$run_autogen" ]; then
-  echo_color red "Running autogen"
+  echo_color green "Running autogen"
   . $root_directory/tools/setenv
   run_command "cd $build_directory"
   run_command "PATH=$_PATH $run_autogen"
   if [ $? -ne 0 ]; then
-    echo_color red "Running autogen failed!"
+    echo_color yellow "Running autogen failed!"
     exit 1
   fi
 fi

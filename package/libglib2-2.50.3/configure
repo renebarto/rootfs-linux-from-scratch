@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
+LD_LIBRARY_PATH=$staging_directory/usr/lib \
 CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \
 FC="$_FC" F77="$_F77" \
 RANLIB="$_RANLIB" \
@@ -120,4 +121,3 @@ CONFIG_SITE=/dev/null \
     --enable-shared \
     --with-pcre=system \
     --disable-libelf
-    
