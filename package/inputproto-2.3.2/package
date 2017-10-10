@@ -1,6 +1,0 @@
-#!/bin/bash
-
-package=inputproto
-version=2.3.2
-package_source=$package-$version.tar.bz2
-package_url=http://xorg.freedesktop.org/releases/individual/proto/$package_source

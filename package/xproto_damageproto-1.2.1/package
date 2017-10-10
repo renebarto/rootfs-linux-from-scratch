@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=xproto_damageproto
+package=damageproto
+version=1.2.1
+package_source=$package-$version.tar.bz2
+package_url=http://xorg.freedesktop.org/releases/individual/proto/$package_source

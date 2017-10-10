@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=xlib_libXext
+package=libXext
+version=1.3.3
+package_source=$package-$version.tar.bz2
+package_url=http://xorg.freedesktop.org/releases/individual/lib/$package_source
