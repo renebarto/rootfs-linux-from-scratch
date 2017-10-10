@@ -22,7 +22,7 @@ else
   for f in $patch_files
   do
     echo_color yellow "Apply patch $f ..."
-    run_command "patch -p1 < $f"
+    run_command "patch -g0 -p1 -E -t < $f"
   done
 fi
 

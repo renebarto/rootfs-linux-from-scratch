@@ -1,0 +1,6 @@
+#!/bin/bash
+
+package=libdrm
+version=2.4.75
+package_source=$package-$version.tar.bz2
+package_url=http://dri.freedesktop.org/$package/$package_source

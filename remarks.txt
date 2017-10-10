@@ -36,7 +36,7 @@ fontconfig-2.12.1
 
 util-macros-1.19.1
 
-- Is not officially mentioned as a package, but is needed for libpciaccess. Probably built as part of buildroot setup.
+- Is mention as xutil_util-macros, but build later in buildroot, but is needed for libpciaccess.
 
 libpciaccess-0.13.4
 
@@ -60,3 +60,34 @@ readline-7.0
 -
 
 util-linux-2.29.2
+
+-
+
+libdrm-2.4.75
+
+- Is supposed to depend on udev, but builds fine without it.
+
+xcb-proto-1.12
+
+-
+
+xproto_xproto-7.0.31
+
+-
+
+xlib_libXau-1.0.8
+
+-
+
+xlib_libXdmcp-1.1.2
+
+-
+
+libxcb-1.12
+
+-
+
+openssl-1.0.2k
+
+-
+

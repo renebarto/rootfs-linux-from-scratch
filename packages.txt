@@ -11,3 +11,9 @@ ncurses-5.9
 readline-7.0
 util-linux-2.29.2
 libdrm-2.4.75
+xcb-proto-1.12
+xproto_xproto-7.0.31
+xlib_libXau-1.0.8
+xlib_libXdmcp-1.1.2
+libxcb-1.12
+openssl-1.0.2k
