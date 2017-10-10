@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=libglib2
+package=glib
+version=2.50.3
+package_source=$package-$version.tar.xz
+package_url=http://ftp.gnome.org/pub/gnome/sources/$package/2.50/$package_source

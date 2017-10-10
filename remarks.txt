@@ -154,3 +154,24 @@ xproto_glproto-1.4.17
 xproto_xf86driproto-2.1.1
 
 - X proto packages are not installed to the target by buildroot. We still do this, just be sure, but might add an option to stop installing to the target.
+
+mesa-17.0.1
+
+-
+
+pcre-8.40
+
+-
+
+libglib2-2.50.3
+
+-
+
+pixman-0.34.0
+
+-
+
+cairo-1.14.8
+
+-
+
