@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=pixman
+package=pixman
+version=0.34.0
+package_source=$package-$version.tar.bz2
+package_url=http://xorg.freedesktop.org/releases/individual/lib/$package_source

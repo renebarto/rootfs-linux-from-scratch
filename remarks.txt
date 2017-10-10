@@ -175,3 +175,35 @@ cairo-1.14.8
 
 -
 
+gstreamer1-1.10.4
+
+-
+
+orc-0.4.26
+
+-
+
+xproto_videoproto-2.3.3
+
+-
+
+xlib_libXv 1.0.11
+
+-
+
+gst1-plugins-base-1.10.4
+
+- Enabled audiotestsrc and videotestsrc, and audiorate and videorate.
+
+gst1-plugins-good-1.10.4
+
+- Enabled auto detection, however still no autoaudiosink or autovideosink present.
+
+gst1-plugins-bad-1.10.4
+
+- Blocks on gettextize. We'll need to build our own gettext package, as buildroot does.
+
+gst1-plugins-ugly-1.10.4
+
+-
+

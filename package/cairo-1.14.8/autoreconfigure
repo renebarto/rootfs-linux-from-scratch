@@ -1,0 +1,27 @@
+#!/bin/bash
+
+PATH="$_PATH" \
+PKG_CONFIG="$_PKG_CONFIG" \
+PKG_CONFIG_SYSROOT_DIR="/" \
+PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 \
+PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 \
+PKG_CONFIG_LIBDIR="$staging_directory/usr/lib/pkgconfig:$staging_directory/usr/share/pkgconfig"
+AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
+CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \
+FC="$_FC" F77="$_F77" \
+RANLIB="$_RANLIB" \
+READELF="$_READELF" \
+STRIP="$_STRIP" \
+OBJCOPY="$_OBJCOPY" \
+OBJDUMP="$_OBJDUMP" \
+CPPFLAGS="-I$staging_directory/usr/include" \
+CFLAGS="-O2 -I$staging_directory/usr/include" \
+CXXFLAGS="-O2 -I$staging_directory/usr/include" \
+LDFLAGS="-L$staging_directory/lib -L$staging_directory/usr/lib -Wl,-rpath,$staging_directory/usr/lib" 
+INTLTOOL_PERL=/usr/bin/perl \
+ACLOCAL="/usr/bin/aclocal -I $staging_directory/usr/share/aclocal" \
+AUTOCONF="/usr/bin/autoconf" \
+AUTOHEADER="/usr/bin/autoheader" \
+AUTOMAKE="/usr/bin/automake" \
+AUTOPOINT=/bin/true
+/usr/bin/autoreconf -f -i -I "$staging_directory/usr/share/aclocal"

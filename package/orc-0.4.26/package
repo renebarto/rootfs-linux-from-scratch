@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=orc
+package=orc
+version=0.4.26
+package_source=$package-$version.tar.xz
+package_url=http://gstreamer.freedesktop.org/data/src/$package/$package_source

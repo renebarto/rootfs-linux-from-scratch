@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=cairo
+package=cairo
+version=1.14.8
+package_source=$package-$version.tar.xz
+package_url=http://cairographics.org/releases/$package_source

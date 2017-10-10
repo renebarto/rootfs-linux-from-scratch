@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=gstreamer1
+package=gstreamer
+version=1.10.4
+package_source=$package-$version.tar.xz
+package_url=https://gstreamer.freedesktop.org/src/$package/$package_source
