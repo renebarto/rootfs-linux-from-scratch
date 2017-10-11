@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/bin/sed -i \
+  -e '/^SUBDIRS/s/ doc //;/^SUBDIRS/s/examples$//' $build_directory/gettext-tools/Makefile.in
+/bin/sed -i \
+  -e '/^SUBDIRS/s/ doc //;/^SUBDIRS/s/tests$//' $build_directory/gettext-runtime/Makefile.in

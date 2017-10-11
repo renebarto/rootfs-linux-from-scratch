@@ -27,4 +27,9 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+if [ -f $root_directory/package/$package_name/post-install-staging ]; then
+  echo_color green "Running post-install-staging"
+  . $root_directory/package/$package_name/post-install-staging
+fi
+
 run_command "touch $build_directory/.stamp_installed"

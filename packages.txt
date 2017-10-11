@@ -34,6 +34,7 @@ xproto_dri2proto-2.8
 xproto_glproto-1.4.17
 xproto_xf86driproto-2.1.1
 mesa-17.0.1
+gettext-0.19.8.1
 pcre-8.40
 libglib2-2.50.3
 pixman-0.34.0
@@ -44,5 +45,6 @@ xproto_videoproto-2.3.3
 xlib_libXv-1.0.11
 gst1-plugins-base-1.10.4
 gst1-plugins-good-1.10.4
+libglu-9.0.0
 gst1-plugins-bad-1.10.4
 gst1-plugins-ugly-1.10.4

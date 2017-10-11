@@ -33,7 +33,6 @@ fi
 
 if [ -n "$run_autogen" ]; then
   echo_color green "Running autogen"
-  . $root_directory/tools/setenv
   run_command "cd $build_directory"
   run_command "PATH=$_PATH $run_autogen"
   if [ $? -ne 0 ]; then
@@ -54,5 +53,10 @@ for file in config.guess config.sub; do
     fi
   done;
 done
+
+if [ -f $root_directory/package/$package_name/post-patch ]; then
+  echo_color green "Running post-patch"
+  . $root_directory/package/$package_name/post-patch
+fi
 
 run_command "touch $build_directory/.stamp_patched"

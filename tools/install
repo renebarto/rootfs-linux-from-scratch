@@ -27,4 +27,9 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+if [ -f $root_directory/package/$package_name/post-install ]; then
+  echo_color green "Running post-patch"
+  . $root_directory/package/$package_name/post-install
+fi
+
 run_command "touch $build_directory/.stamp_target_installed"

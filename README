@@ -1,0 +1,119 @@
+How to build:
+
+First set up the environment:
+
+tools/prepare
+  -> tools/install-dependencies
+
+Then depending on what you like, first fetch all packages:
+
+tools/fetch-all
+  -> tools/forall
+    -> tools/fetch
+
+Then unzip all packages:
+
+tools/unzip-all
+  -> tools/forall
+    -> tools/unzip
+
+Then patch all packages:
+
+tools/patch-all
+  -> tools/forall
+    -> tools/patch
+
+And finally build everything:
+
+tools/build-all
+  -> tools/forall
+    -> tools/complete-build
+      -> tools/configure
+      -> tools/build
+      -> tools/install-staging
+      -> tools/install
+
+Or do it in one go:
+
+tools/rebuild-all
+  ->tools/fetch-all
+  ->tools/clean-all
+  ->tools/unzip-all
+  ->tools/patch-all
+  ->tools/build-all
+
+If you wish to rebuild including fetching packages again:
+
+tools/rebuild-all-full
+  ->tools/refetch-all
+  ->tools/clean-all
+  ->tools/unzip-all
+  ->tools/patch-all
+  ->tools/build-all
+
+You can always clean everything:
+
+tools/clean-all
+  -> tools/forall
+    -> tools/clean
+
+Of course you can also do the packages step by step:
+
+tools/fetch <package>
+  uses
+    tools/functions
+    package/<package>/package
+
+tools/unzip <package>
+  uses
+    tools/functions
+    package/<package>/package
+    tools/setenv
+
+tools/patch <package>
+  uses
+    tools/functions
+    tools/install-functions
+    package/<package>/package
+    tools/setenv
+    patches/<package>/*.patch
+    package/<package>/post-patch (if existing)
+
+tools/complete-build <package>
+
+  OR
+
+tools/configure <package>
+  uses
+    tools/functions
+    tools/install-functions
+    package/<package>/package
+    tools/setenv
+    package/<package>/gettextize (if existing)
+    package/<package>/autoreconfigure (if existing)
+    package/<package>/configure
+
+tools/build <package>
+  uses
+    tools/functions
+    package/<package>/package
+    tools/setenv
+    package/<package>/build
+
+tools/install-staging <package>
+  uses
+    tools/functions
+    tools/install-functions
+    package/<package>/package
+    tools/setenv
+    package/<package>/install-staging (if existing, otherwise default action)
+    package/<package>/post-install-staging (if existing)
+
+tools/install <package>
+  uses
+    tools/functions
+    tools/install-functions
+    package/<package>/package
+    tools/setenv
+    package/<package>/install (if existing, otherwise default action)
+    package/<package>/post-install (if existing)

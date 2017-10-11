@@ -1,0 +1,8 @@
+#!/bin/bash
+
+/bin/sed -i \
+  -e '/read dummy/d' $staging_directory/usr/bin/gettextize
+  
+/usr/bin/install -m 0644 \
+  $build_directory/gettext-tools/ABOUT-NLS \
+  $staging_directory/usr/share/gettext/ABOUT-NLS

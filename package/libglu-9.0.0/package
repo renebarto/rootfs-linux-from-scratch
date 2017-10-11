@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=glu
+package=glu
+version=9.0.0
+package_source=$package-$version.tar.gz
+package_url=http://cgit.freedesktop.org/mesa/$package/snapshot/$package_source
