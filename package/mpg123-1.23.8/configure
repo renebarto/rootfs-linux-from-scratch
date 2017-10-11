@@ -51,30 +51,11 @@ CONFIG_SITE=/dev/null \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --program-prefix="" \
-    --disable-gtk-doc \
-    --disable-gtk-doc-html \
     --disable-dependency-tracking \
+    --enable-ipv6 \
     --disable-static \
     --enable-shared \
-    --disable-examples \
-    --disable-valgrind \
-    CFLAGS="" \
-    --disable-a52dec \
-    --disable-amrnb \
-    --disable-amrwb \
-    --disable-cdio \
-    --disable-sidplay \
-    --disable-twolame \
-    --enable-orc \
-    --disable-a52dec \
-    --disable-asfdemux \
-    --disable-dvdlpcmdec \
-    --disable-dvdsub \
-    --disable-xingmux \
-    --disable-realmedia \
-    --disable-dvdread \
-    --disable-lame \
-    --disable-mad \
-    --enable-mpg123 \
-    --disable-mpeg2dec \
-    --disable-x264
+    --disable-lfs-alias \
+    --with-cpu=x86-64 \
+    --with-audio=dummy,oss
+    

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=mpg123
+package=mpg123
+version=1.23.8
+package_source=$package-$version.tar.bz2
+package_url=http://downloads.sourceforge.net/project/$package/$package/$version/$package_source

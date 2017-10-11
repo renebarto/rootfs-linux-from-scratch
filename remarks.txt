@@ -210,6 +210,12 @@ libglu-9.0.0
 gst1-plugins-bad-1.10.4
 
 - Blocks on gettextize. We need to build our own gettext package, as buildroot does. Now added.
+- As gettextize is in a different directory, it is important to specify gettext_datadir=$staging_directory/usr/share/gettext when calling gettextize
+- For the same reason , it is important to specify AUTOM4TE=/usr/bin/autom4te gettext_datadir=$staging_directory/usr/share/gettext when calling autoreconfigure.
+
+mpg123-1.23.8
+
+-
 
 gst1-plugins-ugly-1.10.4
 

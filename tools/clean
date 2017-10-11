@@ -10,8 +10,14 @@ source $script_directory/functions
 
 . $root_directory/package/$package_name/package
 
+. $root_directory/tools/setenv
+
 echo_color green "Cleaning $package_fullname-$version"
 
 rm -rf $build_directory
+if [ $? -ne 0 ]; then
+  echo_color red "Cleaning $package_fullname-$version failed!"
+  exit 1
+fi
 
-exit $?
+exit 0

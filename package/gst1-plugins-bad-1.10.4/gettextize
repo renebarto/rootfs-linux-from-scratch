@@ -1,6 +1,8 @@
 #!/bin/bash
 
-PATH="$_PATH" \
+echo $_PATH_LOCAL
+
+PATH="$_PATH_LOCAL" \
 PKG_CONFIG="$_PKG_CONFIG" \
 PKG_CONFIG_SYSROOT_DIR="/" \
 PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 \
@@ -17,4 +19,5 @@ CXXFLAGS="-O2 -I$staging_directory/usr/include" \
 LDFLAGS="-L$staging_directory/lib -L$staging_directory/usr/lib -Wl,-rpath,$staging_directory/usr/lib" \
 INTLTOOL_PERL=/usr/bin/perl \
 AUTOM4TE=/usr/bin/autom4te \
-/usr/bin/gettextize -f < /usr/bin/yes
+gettext_datadir=$staging_directory/usr/share/gettext \
+$staging_directory/usr/bin/gettextize -f

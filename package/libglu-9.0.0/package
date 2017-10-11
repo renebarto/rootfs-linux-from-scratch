@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_fullname=glu
+package_fullname=libglu
 package=glu
 version=9.0.0
 package_source=$package-$version.tar.gz

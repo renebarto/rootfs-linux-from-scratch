@@ -23,7 +23,7 @@ else
   for f in $patch_files
   do
     echo_color yellow "Apply patch $f ..."
-    run_command "patch -g0 -p1 -E -t < $f"
+    run_command "patch -g0 -p1 -E -t -N < $f"
     if [ $? -ne 0 ]; then
       echo_color red "Apply patch $f ... failed!"
       exit 1

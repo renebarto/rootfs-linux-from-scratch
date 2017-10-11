@@ -117,3 +117,12 @@ tools/install <package>
     tools/setenv
     package/<package>/install (if existing, otherwise default action)
     package/<package>/post-install (if existing)
+
+To clean a single package:
+
+tools/clean <package>
+  uses
+    tools/functions
+    package/<package>/package
+    tools/setenv
+
