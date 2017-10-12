@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
+make $build_directory/ \
+  -DCMAKE_TOOLCHAIN_FILE="/media/disk/projects/metrological/buildroot-x64-wpe-ml/output/host/usr/share/buildroot/toolchainfile.cmake" \
+  -DCMAKE_INSTALL_PREFIX="/usr" \
+  -DCMAKE_COLOR_MAKEFILE=OFF \
+  -DBUILD_DOC=OFF \
+  -DBUILD_DOCS=OFF \
+  -DBUILD_EXAMPLE=OFF \
+  -DBUILD_EXAMPLES=OFF \
+  -DBUILD_TEST=OFF \
+  -DBUILD_TESTS=OFF \
+  -DBUILD_TESTING=OFF \
+  -DBUILD_SHARED_LIBS=ON \
+  -DCMAKE_C_FLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2  -D_GNU_SOURCE" \
+  -DCMAKE_CXX_FLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2  \-D_GNU_SOURCE"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=pcre
+package=pcre
+version=8.40
+package_source=$package-$version.tar.bz2
+package_url=https://ftp.pcre.org/pub/pcre/$package_source

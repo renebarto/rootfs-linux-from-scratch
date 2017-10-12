@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=icu
+package=icu4c
+version=57.1
+package_source=$package-5$version.tar.gz
+package_url=http://download.icu-project.org/files/icu4c/$version/$package-57_1-src.tgz
