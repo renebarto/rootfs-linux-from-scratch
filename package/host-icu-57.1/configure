@@ -16,7 +16,7 @@ OBJCOPY="$_OBJCOPY" \
 CPPFLAGS="-I$staging_directory/usr/include" \
 CFLAGS="-O2 -I$staging_directory/usr/include" \
 CXXFLAGS="-O2 -I$staging_directory/usr/include" \
-LDFLAGS="-L$staging_directory/lib -L$staging_directory/usr/lib -Wl,-rpath,$staging_directory/usr/lib" \
+LDFLAGS="" \
 INTLTOOL_PERL=/usr/bin/perl \
 CONFIG_SITE=/dev/null \
 ./configure \

@@ -241,6 +241,7 @@ gst1-plugins-ugly-1.10.4
 host-icu-57.1
 
 - Due to the way icu is built, we need to perform a host build first, which is then only referenced by build directory.
+- For a successful build, host-icu should not use any libraries from the staging system.
 
 icu-57.1
 
