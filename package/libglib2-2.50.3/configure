@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
+PATH="$_PATH_LOCAL" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
 LD_LIBRARY_PATH=$staging_directory/usr/lib \
 CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \
 FC="$_FC" F77="$_F77" \
@@ -107,7 +107,7 @@ gt_cv_c_wchar_t=yes glib_cv_have_qsort_r=yes \
 CONFIG_SITE=/dev/null \
 ./configure \
     --target=x86_64-build-linux-gnu \
-    --host= \
+    --host=x86_64-build-linux-gnu \
     --build= \
     --prefix=/usr \
     --exec-prefix=/usr \

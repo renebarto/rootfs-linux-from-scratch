@@ -45,7 +45,7 @@ ac_cv_prog_cc_c99='-std=gnu99' \
 CONFIG_SITE=/dev/null \
 ./configure \
     --target=x86_64-build-linux-gnu \
-    --host= \
+    --host=x86_64-build-linux-gnu \
     --build= \
     --prefix=/usr \
     --exec-prefix=/usr \
