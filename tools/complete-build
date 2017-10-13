@@ -4,7 +4,21 @@ package_name=$1
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+source $script_directory/functions
+
 $script_directory/configure $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
 $script_directory/build $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
 $script_directory/install-staging $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
 $script_directory/install $package_name

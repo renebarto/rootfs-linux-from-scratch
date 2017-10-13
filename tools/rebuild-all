@@ -2,6 +2,8 @@
 
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+source $script_directory/functions
+
 $script_directory/fetch-all
 if [ $? -ne 0 ]; then
   echo_color red "Failure, stopping..."

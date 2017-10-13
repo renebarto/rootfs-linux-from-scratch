@@ -3,18 +3,13 @@
 # CMake toolchain file
 #
 
-# In order to allow the toolchain to be relocated, we calculate the
-# HOST_DIR based on this file's location: $(HOST_DIR)/usr/share/buildroot
-# and store it in RELOCATED_HOST_DIR.
-# All the other variables that need to refer to HOST_DIR will use the
-# RELOCATED_HOST_DIR variable.
-string(REPLACE "/usr/share/buildroot" "" RELOCATED_HOST_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(STAGING_DIR $ENV{STAGING_DIR})
 
 # Point cmake to the location where we have our custom modules,
 # so that it can find our custom platform description.
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 
-set(CMAKE_SYSTEM_NAME Build)
+set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR x86_64)
 
 # Set the {C,CXX}FLAGS appended by CMake depending on the build type.
@@ -35,27 +30,26 @@ set(CMAKE_CXX_FLAGS_RELEASE " -DNDEBUG" CACHE STRING "Release CXXFLAGS")
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Build configuration")
 
 # Defaults flags.
-set(CMAKE_C_FLAGS "-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -O2" CACHE STRING "Buildroot CFLAGS")
-set(CMAKE_CXX_FLAGS "-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -O2" CACHE STRING "Buildroot CXXFLAGS")
-set(CMAKE_EXE_LINKER_FLAGS "" CACHE STRING "Buildroot LDFLAGS for executables")
+set(CMAKE_C_FLAGS "-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -O2" CACHE STRING "Build CFLAGS")
+set(CMAKE_CXX_FLAGS "-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -O2" CACHE STRING "Build  CXXFLAGS")
+set(CMAKE_EXE_LINKER_FLAGS "" CACHE STRING "Build  LDFLAGS for executables")
 
 set(CMAKE_INSTALL_SO_NO_EXE 0)
 
-set(CMAKE_PROGRAM_PATH "${RELOCATED_HOST_DIR}/usr/bin")
-set(CMAKE_SYSROOT "${RELOCATED_HOST_DIR}/usr/x86_64-buildroot-linux-gnu/sysroot")
-set(CMAKE_FIND_ROOT_PATH "${RELOCATED_HOST_DIR}/usr/x86_64-buildroot-linux-gnu/sysroot")
-set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-set(ENV{PKG_CONFIG_SYSROOT_DIR} "${RELOCATED_HOST_DIR}/usr/x86_64-buildroot-linux-gnu/sysroot")
+set(CMAKE_PROGRAM_PATH "${STAGING_DIR}/usr/bin")
+set(CMAKE_SYSROOT "/")
+set(CMAKE_FIND_ROOT_PATH "${STAGING_DIR}")
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY BOTH)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
+set(ENV{PKG_CONFIG_SYSROOT_DIR} "${STAGING_DIR}/usr/x86_64-buildroot-linux-gnu/sysroot")
 
-# This toolchain file can be used both inside and outside Buildroot.
-set(CMAKE_C_COMPILER "${RELOCATED_HOST_DIR}/usr/bin/x86_64-buildroot-linux-gnu-gcc")
-set(CMAKE_CXX_COMPILER "${RELOCATED_HOST_DIR}/usr/bin/x86_64-buildroot-linux-gnu-g++")
+set(CMAKE_C_COMPILER "/usr/bin/gcc")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 if(0)
   set(CMAKE_Fortran_FLAGS_DEBUG "" CACHE STRING "Debug Fortran FLAGS")
   set(CMAKE_Fortran_FLAGS_RELEASE " -DNDEBUG" CACHE STRING "Release Fortran FLAGS")
   set(CMAKE_Fortran_FLAGS "-O2" CACHE STRING "Buildroot FCFLAGS")
-  set(CMAKE_Fortran_COMPILER "${RELOCATED_HOST_DIR}/usr/bin/x86_64-buildroot-linux-gnu-gfortran")
+  set(CMAKE_Fortran_COMPILER "/usr/bin/gfortran")
 endif()
