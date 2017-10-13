@@ -104,7 +104,7 @@ gnutls 3.3.22
 host-libxml-parser-perl 2.44
 host-intltool 0.51.0
 glib-networking 2.50.0
-graphite2 1.2.4
+graphite2 1.3.9
 gstreamer1 1.10.4
 host-orc 0.4.26
 orc 0.4.26
@@ -120,12 +120,12 @@ mpg123 1.23.8
 gst1-plugins-ugly 1.10.4
 host-icu 57.1
 icu 57.1
-harfbuzz 1.0.1
+harfbuzz 1.4.4
 initscripts
 host-nasm 2.12.02
 jpeg-turbo 1.5.1
 jpeg
-libcurl 7.32.0
+libcurl 7.53.1
 libevdev 1.5.6
 libgpg-error 1.26
 libgcrypt 1.7.6
@@ -150,9 +150,6 @@ webp 0.5.2
 netflix
 host-lzip 1.18
 freetype 2.7.1
-graphite2 1.3.9
-harfbuzz 1.4.4
-libcurl 7.53.1
 host-shared-mime-info 1.8
 shared-mime-info 1.8
 wayland-protocols 1.7

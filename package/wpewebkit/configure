@@ -7,7 +7,6 @@ run_command "rm -f CMakeCache.txt"
 
 PATH="$_PATH" \
 CPATH="$staging_directory/usr/include" \
-PKG_CONFIG_PATH="$staging_directory/usr/lib/pkgconfig:$staging_directory/usr/share/pkgconfig" \
 STAGING_DIR="$staging_directory" \
 cmake .. \
   -DCMAKE_TOOLCHAIN_FILE="$root_directory/tools/cmake/toolchainfile.cmake" \

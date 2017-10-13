@@ -190,6 +190,11 @@ nettle-2.7.1
 gnutls-3.3.22
 
 - Needs nettle-2.7.1
+- Needs to find DNSSEC root key
+
+graphite2-1.3.9
+
+-
 
 gstreamer1-1.10.4
 
@@ -241,9 +246,13 @@ icu-57.1
 
 - See host-icu-57.1
 
-# harfbuzz-1.0.1
+harfbuzz-1.4.4
+
+- For netflix, harfbuzz 1.0.1 is used
+
+
 # jpeg-turbo-1.5.1
-# libcurl-7.32.0
+# libcurl-7.53.1
 # libevdev-1.5.6
 # libgpg-error-1.26
 # libgcrypt-1.7.6
@@ -254,19 +263,20 @@ icu-57.1
 # mtdev-1.1.4
 # libinput-1.6.3
 # libmng-2.0.3
-# sqlite-3170000
-# libsoup-2.56.0
+sqlite-3170000
+
+-
+
+libsoup-2.56.0
+
+-
+
 # libxkbcommon-0.7.1
 # libxslt-1.1.29
 # linux-firmware
 # playready
 # webp-0.5.2
-# netflix
-# host-lzip-1.18
 # freetype-2.7.1
-# graphite2-1.3.9
-# harfbuzz-1.4.4
-# libcurl-7.53.1
 # shared-mime-info-1.8
 # wayland-protocols-1.7
 wpebackend
@@ -276,6 +286,8 @@ wpebackend
 wpewebkit
 
 - According to buildroot a patch is needed for WEBPImageDecode.h/cpp, however the patch fails. So removed it.
+- Needs icu 57.1
+- Needs gnutls-3.3.22
 
 # wpelauncher
 # xkeyboard-config-2.20
