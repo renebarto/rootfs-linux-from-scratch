@@ -1,0 +1,45 @@
+#!/bin/bash
+
+run_command "rm -rf $build_directory/cmake_build"
+run_command "mkdir -p $build_directory/cmake_build"
+run_command "cd $build_directory/cmake_build"
+run_command "rm -f CMakeCache.txt"
+
+PATH="$_PATH" \
+CPATH="$staging_directory/usr/include" \
+STAGING_DIR="$staging_directory" \
+cmake .. \
+  -DCMAKE_TOOLCHAIN_FILE="$root_directory/tools/cmake/toolchainfile.cmake" \
+  -DCMAKE_INSTALL_PREFIX="/usr" \
+  -DCMAKE_COLOR_MAKEFILE=ON \
+  -DCMAKE_VERBOSE_MAKEFILE=ON \
+  -DBUILD_SHARED_LIBS=ON \
+  -DPORT=WPE \
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -DCMAKE_C_FLAGS_RELEASE=" -O2 -DNDEBUG -Wno-cast-align" \
+  -DCMAKE_CXX_FLAGS_RELEASE=" -O2 -DNDEBUG -Wno-cast-align" \
+  -DCMAKE_C_FLAGS_DEBUG=" -O2 -DNDEBUG -Wno-cast-align" \
+  -DCMAKE_CXX_FLAGS_DEBUG=" -O2 -DNDEBUG -Wno-cast-align" \
+  -DENABLE_ACCELERATED_2D_CANVAS=ON \
+  -DENABLE_GEOLOCATION=ON \
+  -DENABLE_DEVICE_ORIENTATION=ON \
+  -DENABLE_GAMEPAD=ON \
+  -DENABLE_SUBTLE_CRYPTO=ON \
+  -DENABLE_FULLSCREEN_API=ON \
+  -DENABLE_NOTIFICATIONS=ON \
+  -DENABLE_DATABASE_PROCESS=ON \
+  -DENABLE_INDEXED_DATABASE=ON \
+  -DENABLE_FETCH_API=ON \
+  -DENABLE_SAMPLING_PROFILER=ON \
+  -DENABLE_NATIVE_VIDEO=ON \
+  -DENABLE_NATIVE_AUDIO=OFF \
+  -DENABLE_TEXT_SINK=ON \
+  -DENABLE_VIDEO=ON \
+  -DENABLE_VIDEO_TRACK=ON \
+  -DENABLE_WEB_AUDIO=ON \
+  -DENABLE_MEDIA_SOURCE=ON \
+  -DENABLE_LEGACY_ENCRYPTED_MEDIA_V1=ON \
+  -DENABLE_PLAYREADY=ON \
+  -DUSE_GSTREAMER_GL=ON \
+  -DUSE_GSTREAMER_WEBKIT_HTTP_SRC=ON \
+  -DUSE_HOLE_PUNCH_GSTREAMER=ON

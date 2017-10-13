@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=wpelauncher
+package=wpelauncher
+version=git
+package_source=$package-$version.tar.gz
+package_url=https://github.com/WebPlatformForEmbedded/WPEWebKitLauncher/archive/master.tar.gz

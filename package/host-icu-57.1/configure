@@ -1,0 +1,37 @@
+#!/bin/bash
+
+cd $build_directory/source
+
+# First configure as host system, to create icucross.mk
+PATH="$_PATH" 
+PKG_CONFIG="/usr/bin/pkg-config" \
+PKG_CONFIG_SYSROOT_DIR="/" \
+PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 \
+PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 \
+PKG_CONFIG_LIBDIR="/usr/lib/pkgconfig:/usr/share/pkgconfig" \
+AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
+CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \
+RANLIB="$_RANLIB" \
+OBJCOPY="$_OBJCOPY" \
+CPPFLAGS="-I$staging_directory/usr/include" \
+CFLAGS="-O2 -I$staging_directory/usr/include" \
+CXXFLAGS="-O2 -I$staging_directory/usr/include" \
+LDFLAGS="-L$staging_directory/lib -L$staging_directory/usr/lib -Wl,-rpath,$staging_directory/usr/lib" \
+INTLTOOL_PERL=/usr/bin/perl \
+CONFIG_SITE=/dev/null \
+./configure \
+    --target=x86_64-build-linux-gnu \
+    --host=x86_64-build-linux-gnu \
+    --build= \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-shared \
+    --disable-debug \
+    --disable-samples \
+    --disable-tests \
+    --disable-extras \
+    --disable-icuio \
+    --disable-layout \
+    --disable-renaming

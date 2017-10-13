@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=jpeg-turbo
+package=libjpeg-turbo
+version=1.5.1
+package_source=$package-$version.tar.gz
+package_url=http://downloads.sourceforge.net/project/$package/$version/$package_source

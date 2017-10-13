@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=wpewebkit
+package=wpewebkit
+version=git
+package_source=$package-$version.tar.gz
+package_url=https://github.com/WebPlatformForEmbedded/WPEWebKit/archive/master.tar.gz

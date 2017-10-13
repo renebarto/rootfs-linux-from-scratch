@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PATH="$_PATH" /usr/bin/make -j5 \
+  DESTDIR=$staging_directory install \
+  -C $build_directory/source
+
+echo_color yellow "Fixing libtool files $package_fullname-$version"
+
+for directory in $staging_directory/usr/lib*; do
+  if [ -d $directory ]; then
+    update_references $directory "*.la" $staging_directory
+    if [ $? -ne 0 ]; then
+      exit 1
+    fi
+  fi
+done
+
+echo_color yellow "Fixing pkg-config files $package_fullname-$version"
+
+for directory in $staging_directory/usr/lib/pkgconfig $staging_directory/usr/share/pkgconfig; do
+  if [ -d $directory ]; then
+    update_references $directory "*.pc" $staging_directory
+  fi
+done

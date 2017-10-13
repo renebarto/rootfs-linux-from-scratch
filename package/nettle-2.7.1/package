@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=nettle
+package=nettle
+version=2.7.1
+package_source=$package-$version.tar.gz
+package_url=http://www.lysator.liu.se/~nisse/archive/$package_source
