@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo_color green $_PATH_LOCAL
-
 PATH="$_PATH_LOCAL" \
 PKG_CONFIG="$_PKG_CONFIG" \
 PKG_CONFIG_SYSROOT_DIR="/" \
