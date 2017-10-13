@@ -11,8 +11,7 @@ export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig"
 export XORG_PREFIX="$PREFIX"
 export XORG_CONFIG="--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
 
-_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PATH
-_PATH_LOCAL=$staging_directory/bin:$staging_directory/sbin:$staging_directory/usr/bin:$staging_directory/usr/sbin:$PATH
+_PATH=$staging_directory/bin:$staging_directory/sbin:$staging_directory/usr/bin:$staging_directory/usr/sbin:$PATH
 _AR=/usr/bin/ar
 _AS=/usr/bin/as
 _LD=/usr/bin/ld
