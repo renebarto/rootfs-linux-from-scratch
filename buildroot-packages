@@ -147,7 +147,6 @@ host-mke2img
 host-mtools 4.0.18
 playready
 webp 0.5.2
-netflix
 host-lzip 1.18
 freetype 2.7.1
 host-shared-mime-info 1.8

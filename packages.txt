@@ -76,7 +76,6 @@ libsoup-2.56.0
 # linux-firmware
 # playready
 # webp-0.5.2
-# netflix
 # freetype-2.7.1
 # libcurl-7.53.1
 # shared-mime-info-1.8

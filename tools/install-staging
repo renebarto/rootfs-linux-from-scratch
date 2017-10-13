@@ -17,7 +17,7 @@ echo_color yellow "Installing $package_fullname-$version to staging"
 
 run_command "cd $build_directory"
 
-if [ -f $root_directory/package/$package_name/install ]; then
+if [ -f $root_directory/package/$package_name/install-staging ]; then
   . $root_directory/package/$package_name/install-staging
 else
   install_files install $staging_directory
