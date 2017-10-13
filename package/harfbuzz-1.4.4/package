@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=harfbuzz
+package=harfbuzz
+version=1.4.4
+package_source=$package-$version.tar.bz2
+package_url=https://www.freedesktop.org/software/harfbuzz/release/$package_source

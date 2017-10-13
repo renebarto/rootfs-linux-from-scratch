@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=graphite2
+package=graphite2
+version=1.3.9
+package_source=$package-$version.tar.gz
+package_url=http://downloads.sourceforge.net/project/silgraphite/$package/$package-$version.tgz

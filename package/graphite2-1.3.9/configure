@@ -1,0 +1,17 @@
+#!/bin/bash
+
+run_command "rm -rf $build_directory/cmake_build"
+run_command "mkdir -p $build_directory/cmake_build"
+run_command "cd $build_directory/cmake_build"
+run_command "rm -f CMakeCache.txt"
+
+PATH="$_PATH" \
+CPATH="$staging_directory/usr/include" \
+STAGING_DIR="$staging_directory" \
+cmake .. \
+  -DCMAKE_TOOLCHAIN_FILE="$root_directory/tools/cmake/toolchainfile.cmake" \
+  -DCMAKE_INSTALL_PREFIX="/usr" \
+  -DCMAKE_COLOR_MAKEFILE=ON \
+  -DCMAKE_VERBOSE_MAKEFILE=ON \
+  -DBUILD_SHARED_LIBS=ON
+  

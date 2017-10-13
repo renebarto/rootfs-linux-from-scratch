@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=intltool
+package=intltool
+version=0.51.0
+package_source=$package-$version.tar.gz
+package_url=https://launchpad.net/intltool/trunk/$version/+download/$package_source

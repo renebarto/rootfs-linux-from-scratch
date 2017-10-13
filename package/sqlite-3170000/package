@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=sqlite
+package=sqlite
+version=3170000
+package_source=$package-$version.tar.gz
+package_url=http://www.sqlite.org/2017/$package-autoconf-$version.tar.gz
