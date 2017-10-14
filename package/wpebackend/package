@@ -2,6 +2,6 @@
 
 package_fullname=wpebackend
 package=wpebackend
-version=git
+version=0272534fcc3bf1aff56539e20703b8d53a0328cc
 package_source=$package-$version.tar.gz
-package_url=https://github.com/WebPlatformForEmbedded/WPEBackend/archive/master.tar.gz
+package_url=https://github.com/WebPlatformForEmbedded/WPEBackend/archive/$version/$package_source
