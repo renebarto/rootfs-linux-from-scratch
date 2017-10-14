@@ -4,4 +4,4 @@ package_fullname=wpewebkit
 package=wpewebkit
 version=eafdc7f08cfc5a4a256dcff0c1881784fa4341fe
 package_source=$package-$version.tar.gz
-package_url=https://github.com/WebPlatformForEmbedded/WPEWebKit/$version/$package_source
+package_url=https://github.com/WebPlatformForEmbedded/WPEWebKit/archive/$version/$package_source
