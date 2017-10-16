@@ -34,7 +34,7 @@ ac_cv_c_bigendian=no
 libpng-1.6.28
 
 - Although LDFLAGS_FOR_BUILD is defined correctly, libz.so cannot be found by configure Additionally specifying LDFLAGS="-L$staging_directory/usr/lib" works, but is in conflict with buildroot!
-- Similarly, zlib.h is not found by build unless CPATH=$staging_dir/usr/include is specified.
+- Similarly, zlib.h is not found by build unless CPATH=$staging_directory/usr/include is specified.
 - Need to also fix /usr/bin/libpng16-config and libpng-config for correct paths.
 
 freetype-2.7.1
@@ -52,7 +52,7 @@ util-macros-1.19.1
 libpciaccess-0.13.4
 
 - Although LDFLAGS_FOR_BUILD is defined correctly, libz.so cannot be found by configure Additionally specifying LDFLAGS="-L$staging_directory/usr/lib" works, but is in conflict with buildroot!
-- Similarly, zlib.h is not found by build unless CPATH=$staging_dir/usr/include is specified, both for configure and make.
+- Similarly, zlib.h is not found by build unless CPATH=$staging_directory/usr/include is specified, both for configure and make.
 
 libpthread-stubs-0.3
 
