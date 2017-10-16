@@ -2,7 +2,7 @@
 
 PATH="$_PATH" /usr/bin/make -j5 \
   DESTDIR=$staging_directory install \
-  -C $build_directory/source
+  -C $build_directory
 
 echo_color yellow "Fixing package configuration $package_fullname-$version"
 
@@ -14,7 +14,7 @@ echo_color yellow "Fixing package configuration $package_fullname-$version"
   -e "s|-L/usr/|-L@STAGING_DIR@/usr/|g" \
   -e "s,@STAGING_DIR@,$staging_directory,g" \
   -e "s,@BASE_DIR@,$output_directory,g" \
-  $staging_directory/usr/bin/libgrypto-config ;
+  $staging_directory/usr/bin/libgcrypt-config ;
 
 echo_color yellow "Fixing libtool files $package_fullname-$version"
 
