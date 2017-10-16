@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=libxkbcommon
+package=libxkbcommon
+version=0.7.1
+package_source=$package-$version.tar.xz
+package_url=http://xkbcommon.org/download/$package_source

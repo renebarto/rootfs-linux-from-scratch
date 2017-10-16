@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=wayland-protocols
+package=wayland-protocols
+version=1.7
+package_source=$package-$version.tar.xz
+package_url=http://wayland.freedesktop.org/releases/$package_source

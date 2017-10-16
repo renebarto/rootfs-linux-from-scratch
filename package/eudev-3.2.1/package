@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=eudev
+package=eudev
+version=3.2.1
+package_source=$package-$version.tar.gz
+package_url=http://dev.gentoo.org/~blueness//$package/$package_source

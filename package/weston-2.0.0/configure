@@ -24,9 +24,10 @@ DEFAULT_LINKER="$_LD" \
 CPPFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" \
 CFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 " \
 CXXFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 " \
-LDFLAGS="" \
+LDFLAGS="-L$staging_directory/usr/lib" \
 FCFLAGS=" -O2 " \
 FFLAGS=" -O2 " \
+CPATH="$staging_directory/usr/include" \
 PKG_CONFIG="$_PKG_CONFIG" \
 STAGING_DIR="$staging_directory" \
 INTLTOOL_PERL=/usr/bin/perl \
@@ -40,22 +41,37 @@ ac_cv_func_calloc_0_nonnull=yes \
 ac_cv_func_realloc_0_nonnull=yes \
 lt_cv_sys_lib_search_path_spec="" \
 ac_cv_c_bigendian=no \
-ac_cv_path_LIBPNG_CONFIG=$staging_directory/usr/bin/libpng-config \
 CONFIG_SITE=/dev/null \
 ./configure \
     --target=x86_64-build-linux-gnu \
     --host=x86_64-build-linux-gnu \
     --build= \
-    --prefix=/usr \
-    --exec-prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
+    --prefix=$staging_directory/usr \
+    --exec-prefix=$staging_directory/usr \
+    --sysconfdir=$staging_directory/etc \
+    --localstatedir=$staging_directory/var \
     --program-prefix="" \
     --disable-dependency-tracking \
     --disable-static \
     --enable-shared \
-    --with-jpegincludedir=$staging_directory/usr/include \
-    --with-jpeglibdir=$staging_directory/usr/lib \
-    --with-tiffincludedir=$staging_directory/usr/include \
-    --with-tifflibdir=$staging_directory/usr/lib \
-    --enable-libwebpdemux
+    --with-dtddir=$staging_directory/usr/share/wayland \
+    --disable-headless-compositor \
+    --disable-colord \
+    --disable-devdocs \
+    --disable-setuid-install \
+    --disable-simple-dmabuf-v4l-client \
+    --disable-dbus \
+    --disable-weston-launch \
+    --enable-egl \
+    --disable-libunwind \
+    --disable-rdp-compositor \
+    --enable-fbdev-compositor \
+    --enable-drm-compositor \
+    --enable-x11-compositor \
+    WESTON_NATIVE_BACKEND=x11-backend.so \
+    --disable-vaapi-recorder \
+    --disable-lcms \
+    --disable-systemd-login \
+    --disable-systemd-notify \
+    --enable-junit-xml \
+    --enable-demo-clients-install

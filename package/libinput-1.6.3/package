@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=libinput
+package=libinput
+version=1.6.3
+package_source=$package-$version.tar.xz
+package_url=http://www.freedesktop.org/software/$package/$package_source

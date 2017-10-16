@@ -1,0 +1,33 @@
+#!/bin/bash
+
+package_name=$1
+
+script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $script_directory/functions
+
+$script_directory/fetch $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
+$script_directory/clean $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
+$script_directory/unzip $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
+$script_directory/patch $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
+$script_directory/complete-build $package_name
+if [ $? -ne 0 ]; then
+  echo_color red "Failure, stopping..."
+  exit 1
+fi
