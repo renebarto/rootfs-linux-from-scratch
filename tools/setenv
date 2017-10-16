@@ -5,10 +5,9 @@ staging_directory=$output_directory/staging
 target_directory=$output_directory/target
 build_directory=$root_directory/build/$package_name
 
-PREFIX="$staging_directory/usr"
-export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig"
+export PKG_CONFIG_PATH="$staging_directory/usr/lib/pkgconfig:$staging_directory/usr/share/pkgconfig"
 
-export XORG_PREFIX="$PREFIX"
+export XORG_PREFIX="$staging_directory/usr"
 export XORG_CONFIG="--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
 
 _PATH=$staging_directory/bin:$staging_directory/sbin:$staging_directory/usr/bin:$staging_directory/usr/sbin:$PATH

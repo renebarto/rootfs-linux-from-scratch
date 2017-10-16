@@ -4,6 +4,15 @@ General:
 - When updating references in *.pc and *.la files, sometimes the staging directory is present. This also needs to be replaced. I've added install-functions which does the full backward and forward replacement.
 - Since buildroot commit 2d0d94ef43377c94b6c74679ed65f95bb35f7b02 (2017-10-03), wpewebkit was bumped to eafdc7f08cfc5a4a256dcff0c1881784fa4341fe, which enforces usage of libepoxy. This will fail the build if we do not have that library. For now, we are going back to commit 5811a55428f6fa7631461002c65ed48ef86f44f8 (2017-09-25) which does not need libepoxy yet. But we need to fix that.
 
+Running Weston:
+- After building, the output is in output/target. The weston executable is therefore in output/target/usr/bin. Simply starting it will not work, you will have to set some variables:
+export XDG_RUNTIME_DIR=/tmp/weston or /run/user/1000
+mkdir -p $XDG_RUNTIME_DIR
+chmod 700 $XDG_RUNTIME_DIR
+export LIBGL_DRIVERS_PATH=$BUILD_PREFIX/output/target/usr/lib/dri
+If desired, update the  weston.ini file in $BUILD_PREFIX/output/target/etc/xdg
+From output/target/usr/bin, run ./weston -c ../../etc/xdg/weston.ini
+
 expat-2.2.0
 
 -
@@ -25,7 +34,7 @@ ac_cv_c_bigendian=no
 libpng-1.6.28
 
 - Although LDFLAGS_FOR_BUILD is defined correctly, libz.so cannot be found by configure Additionally specifying LDFLAGS="-L$staging_directory/usr/lib" works, but is in conflict with buildroot!
-- Similarly, zlib.h is not found by build unless CPATH=$PREFIX/include is specified.
+- Similarly, zlib.h is not found by build unless CPATH=$staging_dir/usr/include is specified.
 - Need to also fix /usr/bin/libpng16-config and libpng-config for correct paths.
 
 freetype-2.7.1
@@ -43,7 +52,7 @@ util-macros-1.19.1
 libpciaccess-0.13.4
 
 - Although LDFLAGS_FOR_BUILD is defined correctly, libz.so cannot be found by configure Additionally specifying LDFLAGS="-L$staging_directory/usr/lib" works, but is in conflict with buildroot!
-- Similarly, zlib.h is not found by build unless CPATH=$PREFIX/include is specified, both for configure and make.
+- Similarly, zlib.h is not found by build unless CPATH=$staging_dir/usr/include is specified, both for configure and make.
 
 libpthread-stubs-0.3
 

@@ -1,15 +1,15 @@
 #!/bin/bash
 
-mkdir -p $PREFIX/../etc/profile.d
+mkdir -p $staging_dir/usr/../etc/profile.d
 
-cat > $PREFIX/../etc/profile.d/xorg.sh << EOF
+cat > $staging_dir/usr/../etc/profile.d/xorg.sh << EOF
 XORG_PREFIX="$XORG_PREFIX"
 XORG_CONFIG="--prefix=\$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
 export XORG_PREFIX XORG_CONFIG
 EOF
-chmod 644 $PREFIX/../etc/profile.d/xorg.sh
+chmod 644 $staging_dir/usr/../etc/profile.d/xorg.sh
 
-cat >> $PREFIX/../etc/profile.d/xorg.sh << "EOF"
+cat >> $staging_dir/usr/../etc/profile.d/xorg.sh << "EOF"
 
 pathappend $XORG_PREFIX/bin             PATH
 pathappend $XORG_PREFIX/lib/pkgconfig   PKG_CONFIG_PATH
@@ -24,14 +24,14 @@ ACLOCAL="aclocal -I $XORG_PREFIX/share/aclocal"
 export PATH PKG_CONFIG_PATH ACLOCAL LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 EOF
 
-echo "$XORG_PREFIX/lib" >> $PREFIX/../etc/ld.so.conf
+echo "$XORG_PREFIX/lib" >> $staging_dir/usr/../etc/ld.so.conf
 
-touch $PREFIX/../etc/man_db.conf
-sed "s@$PREFIX/X11R6@$XORG_PREFIX@g" -i $PREFIX/../etc/man_db.conf
+touch $staging_dir/usr/../etc/man_db.conf
+sed "s@$staging_dir/usr/X11R6@$XORG_PREFIX@g" -i $staging_dir/usr/../etc/man_db.conf
 
-mkdir -p $PREFIX/share/X11
+mkdir -p $staging_dir/usr/share/X11
 
-ln -sf $XORG_PREFIX $PREFIX/X11R6
+ln -sf $XORG_PREFIX $staging_dir/usr/X11R6
 
 PATH="$_PATH" AR="$_AR" AS="$_AS" LD="$_LD" NM="$_NM" \
 CC="$_CC" GCC="$_GCC" CPP="$_CPP" CXX="$_CXX" \

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-PATH="$_PATH" CPATH=$PREFIX/include /usr/bin/make -j1 -C $build_directory DESTDIR=$staging_directory/sysroot sources
-PATH="$_PATH" CPATH=$PREFIX/include /usr/bin/make -j5 -C $build_directory DESTDIR=$staging_directory/sysroot
+PATH="$_PATH" CPATH=$staging_dir/usr/include /usr/bin/make -j1 -C $build_directory DESTDIR=$staging_directory/sysroot sources
+PATH="$_PATH" CPATH=$staging_dir/usr/include /usr/bin/make -j5 -C $build_directory DESTDIR=$staging_directory/sysroot

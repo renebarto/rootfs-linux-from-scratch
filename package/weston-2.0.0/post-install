@@ -1,0 +1,14 @@
+#!/bin/bash
+
+run_command "mkdir -p $target_directory/etc/xdg"
+run_command "/usr/bin/install -m 0644 \
+  $root_directory/package/$package-$version/weston.ini \
+  $target_directory/etc/xdg/weston.ini"
+
+echo_color yellow "Fixing weston.ini"
+
+for directory in $target_directory/etc/xdg; do
+  if [ -d $directory ]; then
+    update_references $directory "weston.ini" $target_directory
+  fi
+done

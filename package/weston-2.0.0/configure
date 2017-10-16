@@ -31,6 +31,8 @@ CPATH="$staging_directory/usr/include" \
 PKG_CONFIG="$_PKG_CONFIG" \
 STAGING_DIR="$staging_directory" \
 INTLTOOL_PERL=/usr/bin/perl \
+EGL_CFLAGS="$staging_directory/usr/include" \
+EGL_LIBS="$staging_directory/usr/lib" \
 ac_cv_lbl_unaligned_fail=no \
 ac_cv_func_mmap_fixed_mapped=yes \
 ac_cv_func_memcmp_working=yes \
@@ -46,10 +48,10 @@ CONFIG_SITE=/dev/null \
     --target=x86_64-build-linux-gnu \
     --host=x86_64-build-linux-gnu \
     --build= \
-    --prefix=$staging_directory/usr \
-    --exec-prefix=$staging_directory/usr \
-    --sysconfdir=$staging_directory/etc \
-    --localstatedir=$staging_directory/var \
+    --prefix=/usr \
+    --exec-prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
     --program-prefix="" \
     --disable-dependency-tracking \
     --disable-static \
