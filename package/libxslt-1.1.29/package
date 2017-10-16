@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=libxslt
+package=libxslt
+version=1.1.29
+package_source=$package-$version.tar.gz
+package_url=ftp://xmlsoft.org/libxslt/$package_source

@@ -15,6 +15,9 @@ full_filename=$(basename "$package_source")
 extension="${full_filename##*.}"
 filename="${full_filename%.*}"
 
+unzip_tool=
+cat_tool=
+
 case $extension in
 xz)
   cat_tool=xzcat
@@ -24,6 +27,9 @@ bz2)
   ;;
 gz)
   cat_tool=zcat
+  ;;
+zip)
+  unzip_tool=unzip
   ;;
 *)
   echo_color red "Unknown archive extension"
@@ -36,7 +42,14 @@ esac
 
 echo_color yellow "Unpacking $package_fullname-$version"
 run_command "mkdir -pv $build_directory"
-run_command "$($cat_tool $root_directory/download/$package_source | tar --strip-components=1 -C $build_directory -xf -)"
+if [ "$cat_tool" != "" ]; then
+  run_command "$($cat_tool $root_directory/download/$package_source | tar --strip-components=1 -C $build_directory -xf -)"
+elif [ "$unzip_tool" != "" ]; then
+  run_command "$($unzip_tool -q -o $root_directory/download/$package_source -d $build_directory)"  
+else
+  echo_color red "No tool to unpack $package_fullname-$version!"
+  exit 1
+fi
 
 if [ $? -ne 0 ]; then
   echo_color red "Unpacking $package_fullname-$version failed!"

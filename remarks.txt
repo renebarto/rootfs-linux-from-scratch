@@ -2,6 +2,7 @@ General:
 
 - buildroot does not update *.pc files which may lead to issues later on. So I've add this feature.
 - When updating references in *.pc and *.la files, sometimes the staging directory is present. This also needs to be replaced. I've added install-functions which does the full backward and forward replacement.
+- Since buildroot commit 2d0d94ef43377c94b6c74679ed65f95bb35f7b02 (2017-10-03), wpewebkit was bumped to eafdc7f08cfc5a4a256dcff0c1881784fa4341fe, which enforces usage of libepoxy. This will fail the build if we do not have that library. For now, we are going back to commit 5811a55428f6fa7631461002c65ed48ef86f44f8 (2017-09-25) which does not need libepoxy yet. But we need to fix that.
 
 expat-2.2.0
 
@@ -25,10 +26,11 @@ libpng-1.6.28
 
 - Although LDFLAGS_FOR_BUILD is defined correctly, libz.so cannot be found by configure Additionally specifying LDFLAGS="-L$staging_directory/usr/lib" works, but is in conflict with buildroot!
 - Similarly, zlib.h is not found by build unless CPATH=$PREFIX/include is specified.
+- Need to also fix /usr/bin/libpng16-config and libpng-config for correct paths.
 
 freetype-2.7.1
 
--
+- Need to also fix /usr/bin/freetype-config for correct paths.
 
 fontconfig-2.12.1
 
@@ -54,6 +56,7 @@ libffi-3.2.1
 ncurses-5.9
 
 - Needed by readline. Weirdly complains about usr/lib/pkgconfig/zlib.pc not being a directory, while trying to install .pc files. However ncurses does itself not generate a .pc file.
+- Need to also fix /usr/bin/ncurses5-config for correct paths.
 
 readline-7.0
 
@@ -93,7 +96,7 @@ openssl-1.0.2k
 
 libxml2-2.9.4
 
--
+- Need to also fix /usr/bin/xml2-config for correct paths. Otherwise, libxslt-1.1.29 will fail to build.
 
 wayland-1.13.0
 
@@ -161,15 +164,15 @@ mesa-17.0.1
 
 gettext-0.19.8.1
 
--
+- Need to also fix /usr/bin/gettextize for correct paths.
 
 pcre-8.40
 
--
+- Need to also fix /usr/bin/prce-config for correct paths.
 
 libglib2-2.50.3
 
--
+- Need to also fix /usr/bin/glib-gettextize for correct paths.
 
 pixman-0.34.0
 
@@ -191,6 +194,10 @@ gnutls-3.3.22
 
 - Needs nettle-2.7.1
 - Needs to find DNSSEC root key
+
+intltool-0.51.0
+
+- Need to also fix /usr/bin/intltoolize for correct paths.
 
 graphite2-1.3.9
 
@@ -246,6 +253,7 @@ host-icu-57.1
 icu-57.1
 
 - See host-icu-57.1
+- Need to also fix /usr/bin/icu-config for correct paths.
 
 harfbuzz-1.4.4
 
@@ -255,8 +263,16 @@ harfbuzz-1.4.4
 # jpeg-turbo-1.5.1
 # libcurl-7.53.1
 # libevdev-1.5.6
-# libgpg-error-1.26
-# libgcrypt-1.7.6
+
+libgpg-error-1.26
+
+- Need to also fix /usr/bin/gpg-error-config for correct paths.
+
+libgcrypt-1.7.6
+
+- Needs libgpg-error-1.26
+- Need to also fix /usr/bin/libgrypt-config for correct paths.
+
 # xlib_libXi-1.7.9
 # xlib_libXt-1.1.5
 # xlib_libXmu-1.1.2
@@ -273,22 +289,35 @@ libsoup-2.56.0
 -
 
 # libxkbcommon-0.7.1
-# libxslt-1.1.29
+
+libxslt-1.1.29
+
+- Needs libgcrypt-1.7.6
+- Need correct path in /usr/bin/xml2-config
+
 # linux-firmware
-# playready
-# webp-0.5.2
+
+playready
+
+- CMake does not contain pkgconfig files, so these are installed separately.
+
+webp-0.5.2
 # freetype-2.7.1
 # shared-mime-info-1.8
 # wayland-protocols-1.7
+
 wpebackend
 
 - Needed to install toolchain file for cmake. Now passing STAGING_DIR to correctly find headers and libs.
 
 wpewebkit
 
-- According to buildroot a patch is needed for WEBPImageDecode.h/cpp, however the patch fails. So removed it.
+- According to buildroot a patch is needed for WEBPImageDecode.h/cpp, however the patch fails for the newer version of wpewebkit. It only succeeds for commit 5811a55428f6fa7631461002c65ed48ef86f44f8, not for eafdc7f08cfc5a4a256dcff0c1881784fa4341fe.
 - Needs icu 57.1
 - Needs gnutls-3.3.22
+- New version needs libepoxy
+- Needs libgcrypt-1.7.6
+- Needs playready, not checked as required
 
 # wpelauncher
 # xkeyboard-config-2.20

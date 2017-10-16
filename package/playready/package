@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=playready
+package=playready
+version=5af745dd2a8312a34081150c8b374684799fc1c9
+package_source=$package-$version.zip
+package_url=https://github.com/Metrological/$package/archive/$version/$package_source

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+PATH="$_PATH" /usr/bin/make -j5 \
+  DESTDIR=$target_directory install \
+  -C $build_directory
+
+echo_color yellow "Fixing package configuration $package_fullname-$version"
+
+/bin/sed -i -e "s,$output_directory,@BASE_DIR@,g" \
+  -e "s,$target_directory,@TARGET_DIR@,g" \
+  -e "s,^\(exec_\)\?prefix=.*,\1prefix=@TARGET_DIR@/usr,g" \
+  -e "s|\([\"'= ]\)/usr|\\1@TARGET_DIR@/usr|g" \
+  -e "s|-I/usr/|-I@TARGET_DIR@/usr/|g" \
+  -e "s|-L/usr/|-L@TARGET_DIR@/usr/|g" \
+  -e "s,@TARGET_DIR@,$target_directory,g" \
+  -e "s,@BASE_DIR@,$output_directory,g" \
+  $target_directory/usr/bin/gpg-error-config ;
+
+echo_color yellow "Fixing libtool files $package_fullname-$version"
+
+for directory in $target_directory/usr/lib*; do
+  if [ -d $directory ]; then
+    update_references $directory "*.la" $target_directory
+    if [ $? -ne 0 ]; then
+      exit 1
+    fi
+  fi
+done
+
+echo_color yellow "Fixing pkg-config files $package_fullname-$version"
+
+for directory in $target_directory/usr/lib/pkgconfig $target_directory/usr/share/pkgconfig; do
+  if [ -d $directory ]; then
+    update_references $directory "*.pc" $target_directory
+    if [ $? -ne 0 ]; then
+      exit 1
+    fi
+  fi
+done

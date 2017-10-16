@@ -60,8 +60,8 @@ harfbuzz-1.4.4
 jpeg-turbo-1.5.1
 # libcurl-7.32.0
 # libevdev-1.5.6
-# libgpg-error-1.26
-# libgcrypt-1.7.6
+libgpg-error-1.26
+libgcrypt-1.7.6
 # xlib_libXi-1.7.9
 # xlib_libXt-1.1.5
 # xlib_libXmu-1.1.2
@@ -72,9 +72,9 @@ jpeg-turbo-1.5.1
 sqlite-3170000
 libsoup-2.56.0
 # libxkbcommon-0.7.1
-# libxslt-1.1.29
+libxslt-1.1.29
 # linux-firmware
-# playready
+playready
 # webp-0.5.2
 # freetype-2.7.1
 # libcurl-7.53.1
