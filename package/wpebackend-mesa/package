@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package_fullname=wpebackend-mesa
+package=wpebackend-mesa
+version=0286aed84a09120de16c3ab08bdf83c91d4a1754
+package_source=$package-$version.tar.gz
+package_url=https://github.com/WebPlatformForEmbedded/WPEBackend-mesa/archive/$version/$package_source

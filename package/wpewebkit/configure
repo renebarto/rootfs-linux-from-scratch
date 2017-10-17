@@ -13,10 +13,11 @@ cmake .. \
   -DCMAKE_TOOLCHAIN_FILE="$root_directory/tools/cmake/toolchainfile.cmake" \
   -DCMAKE_INSTALL_PREFIX="/usr" \
   -DCMAKE_COLOR_MAKEFILE=ON \
-  -DCMAKE_VERBOSE_MAKEFILE=ON \
+  -DCMAKE_VERBOSE_MAKEFILE=OFF \
   -DBUILD_SHARED_LIBS=ON \
   -DPORT=WPE \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -G Ninja \
   -DCMAKE_C_FLAGS_RELEASE=" -O2 -DNDEBUG -Wno-cast-align" \
   -DCMAKE_CXX_FLAGS_RELEASE=" -O2 -DNDEBUG -Wno-cast-align" \
   -DCMAKE_C_FLAGS_DEBUG=" -O2 -DNDEBUG -Wno-cast-align" \
