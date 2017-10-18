@@ -71,7 +71,7 @@ libsoup-2.56.0
 # libxkbcommon-0.7.1
 libxslt-1.1.29
 # linux-firmware
-playready
+# playready
 webp-0.5.2
 # freetype-2.7.1
 # libcurl-7.53.1

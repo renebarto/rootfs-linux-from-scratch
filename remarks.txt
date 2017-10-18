@@ -333,7 +333,7 @@ wpewebkit
 - Needs gnutls-3.3.22
 - New version needs libepoxy
 - Needs libgcrypt-1.7.6
-- Needs playready, not checked as required
+- Needs playready, not checked as required, dropped for now
 
 # wpelauncher
 # xkeyboard-config-2.20

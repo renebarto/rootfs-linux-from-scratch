@@ -1,24 +1,21 @@
 #!/bin/bash
 
-PATH="$_PATH" /usr/bin/make -j5 \
-  DESTDIR=$staging_directory install/fast \
-  -C $build_directory/cmake_build
+#!/bin/bash
+
+run_command "cp $build_directory/cmake_build/bin/WPE{Database,Network,Web}Process \
+  $staging_directory/usr/bin/"
+run_command "cp -d $build_directory/cmake_build/lib/libWPE* \
+  $staging_directory/usr/lib/"
+run_command "DESTDIR=$staging_directory \
+  /usr/bin/cmake \
+    -DCOMPONENT=Development \
+    -P $build_directory/cmake_build/Source/JavaScriptCore/cmake_install.cmake"
+run_command "DESTDIR=$staging_directory \
+  /usr/bin/cmake \
+    -DCOMPONENT=Development \
+    -P $build_directory/cmake_build/Source/WebKit2/cmake_install.cmake"
 
 echo_color yellow "Fixing libtool files $package_fullname-$version"
 
-for directory in $staging_directory/usr/lib*; do
-  if [ -d $directory ]; then
-    update_references $directory "*.la" $staging_directory
-    if [ $? -ne 0 ]; then
-      exit 1
-    fi
-  fi
-done
-
 echo_color yellow "Fixing pkg-config files $package_fullname-$version"
 
-for directory in $staging_directory/usr/lib/pkgconfig $staging_directory/usr/share/pkgconfig; do
-  if [ -d $directory ]; then
-    update_references $directory "*.pc" $staging_directory
-  fi
-done
