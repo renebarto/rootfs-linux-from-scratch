@@ -2,6 +2,6 @@
 
 package_fullname=wpelauncher
 package=wpelauncher
-version=af5d200bd67455f82406ac5ae4bb37a13325878f
+version=49f8b4f564605a7b2adc9f594ef53e108b546434
 package_source=$package-$version.tar.gz
 package_url=https://github.com/WebPlatformForEmbedded/WPEWebKitLauncher/archive/$version/$package_source

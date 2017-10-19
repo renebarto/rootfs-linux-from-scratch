@@ -4,4 +4,4 @@ package_fullname=libpng
 package=libpng
 version=1.6.28
 package_source=$package-$version.tar.xz
-package_url=https://downloads.sourceforge.net/$package/$package_source
+package_url=https://downloads.sourceforge.net/project/$package/libpng16/older-releases/$version/$package_source

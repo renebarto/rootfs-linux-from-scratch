@@ -4,4 +4,4 @@ package_fullname=util-macros
 package=util-macros
 version=1.19.1
 package_source=$package-$version.tar.bz2
-package_url=https://www.x.org/pub/individual/util/$package_source
+package_url=https://www.x.org/archive/individual/util/$package_source

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-package_fullname=wpebackend-rdk
-package=wpebackend-rdk
-version=faf66440d43e7b4bf741a0b3a765982704827f7b
-package_source=$package-$version.tar.gz
-package_url=https://github.com/WebPlatformForEmbedded/WPEBackend-rdk/archive/$version/$package_source

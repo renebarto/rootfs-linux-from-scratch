@@ -1,3 +1,0 @@
-#!/bin/bash
-
-PATH="$_PATH" CPATH=$staging_directory/usr/include /usr/bin/make -j5 -C $build_directory/cmake_build

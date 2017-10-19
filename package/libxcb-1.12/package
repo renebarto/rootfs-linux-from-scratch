@@ -4,4 +4,4 @@ package_fullname=libxcb
 package=libxcb
 version=1.12
 package_source=$package-$version.tar.bz2
-package_url=http://xcb.freedesktop.org/dist/$package_source
+package_url=https://xcb.freedesktop.org/dist/$package_source
