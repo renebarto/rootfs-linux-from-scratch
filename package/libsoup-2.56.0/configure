@@ -60,5 +60,5 @@ CONFIG_SITE=/dev/null \
     --disable-glibtest \
     --enable-vala=no \
     --with-gssapi=no \
-    --without-gnome
-    # --disable-tls-check
+    --without-gnome \
+    --disable-tls-check

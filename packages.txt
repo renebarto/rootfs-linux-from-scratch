@@ -81,6 +81,7 @@ webp-0.5.2
 wpebackend
 wpewebkit
 wpelauncher
+libxkbcommon-0.7.1
 # xkeyboard-config-2.20
 wpebackend-mesa
 # xlib_libxkbfile-1.0.9
@@ -91,7 +92,6 @@ mtdev-1.1.4
 libevdev-1.5.6
 libinput-1.6.3
 wayland-protocols-1.7
-libxkbcommon-0.7.1
 xproto_renderproto-0.11.1
 xlib_libXrender-0.9.10
 xlib_libXcursor-1.1.14
