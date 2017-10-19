@@ -1,3 +1,5 @@
+#!/bin/bash
+
 root_directory=$(pwd)
 script_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $root_directory
