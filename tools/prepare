@@ -30,6 +30,3 @@ echo_color yellow "Creating directories"
 run_command "mkdir -pv download"
 run_command "mkdir -pv build"
 
-echo -e ""
-echo_color yellow "Installing packages"
-$script_directory/install-dependencies
